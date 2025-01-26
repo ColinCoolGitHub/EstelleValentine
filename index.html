@@ -41,6 +41,14 @@
             perspective: 1500px;
         }
 
+        .st {
+            text-align:center;
+            justify-content:center
+       /*     width: 200px;
+            height: 200px;*/
+            /*perspective: 1500px;*/
+        }
+
         .die {
             position: absolute;
             width: 100%;
@@ -288,7 +296,7 @@
     </style>
 </head>
 <body>
-    <div class="content">
+    <div id="dicecontent" class="content">
         <div class="die">
             <figure class="face face-1"></figure>
             <figure class="face face-2"></figure>
@@ -313,88 +321,81 @@
         </div>
     </div>
 
+    <div id="st" class="st">
+        <p id="stText">123</p>
+    </div>
+
+
 
     <div class="container">
         <div class="book-wrapper">
             <div class="book-cover">
-                <img src="https://github.com/slyka85/assets/blob/master/bookcover2.png?raw=true" alt="">
+                <img src="bookcover2.png" alt="Couverture du livre">
             </div>
             <div class="pages-container">
                 <div class="pages">
-                    <div class="page-num-1">
+                    <!-- Page 1 -->
+                    <div id="page1" class="page-num-1">
                         <div class="pages-content">
                             <div class="pages-background"></div>
                             <div class="content-inner">
-                                <h1>Chapter 1</h1>
-                                <div class="text"><p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptas ea non vitae a assumenda sint quod, dolores laboriosam velit corrupti nobis cupiditate perspiciatis natus exercitationem, architecto esse ratione blanditiis! Itaque.</p></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-num-2">
-                        <div class="pages-content">
-                            <div class="content-inner">
-                                <h1>Chapter 2</h1>
+                                <h1>Introduction</h1>
                                 <div class="text">
-                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eos, cumque autem! Magni eligendi qui officiis? Fugit iste voluptatum atque voluptatibus totam! Nisi accusantium saepe hic. Aut nobis nesciunt mollitia error.</p>
-                                    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam odio modi, hic ratione fugit quod natus, excepturi quae minus voluptatum cupiditate quia magnam eveniet ex, reiciendis voluptates ipsam iste laudantium!</p>
-                                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati deserunt magnam, at perspiciatis aut. Voluptatem consequuntur neque quisquam?</p>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="page-num-3">
-                        <div class="pages-content">
-                            <div class="content-inner">
-                                <h1>Chapter 3</h1>
-                                <div class="text">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptate voluptas molestiae tempore amet adipisci dicta incidunt nisi alias distinctio fugit blanditiis dignissimos nobis deserunt eum consequuntur ipsam, perspiciatis numquam repellendus.</p>
-                                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Delectus in odio deserunt est hic minima inventore, mollitia, officia aspernatur eaque voluptatibus? Amet, molestias adipisci delectus ea eligendi sit numquam illo.</p>
+                                    <p>Colin, un garçon timide mais plein de rêves, voulait demander à Estelle, la fille la plus belle du monde, d'être sa Valentine. Il avait tout préparé : une lettre, un bouquet de fleurs et son courage, fragile mais sincère.</p>
+                                    <p>Le jour de la Saint-Valentin était arrivé, et Colin savait qu'il devait tenter sa chance. Mais comment s'y prendre ? C'était le moment où le destin, ou peut-être un jet de dés, déciderait de son avenir.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="page-num-4">
+                    <!-- Page 2 -->
+                    <div id="page2" class="page-num-2">
                         <div class="pages-content">
                             <div class="content-inner">
-                                <h1>The End</h1>
+                                <h1>Le Grand Moment</h1>
+                                <div class="text">
+                                    <p>Colin se dirigea vers Estelle, qui était assise sous l'arbre du parc, entourée de ses amies. Son cœur battait à tout rompre. Faire un jet de dé pour savoir la suite!</p>
+                                    <!--<p><strong>Jet de dé :</strong></p>
+                                    <ul>
+                                        <li>Si vous obtenez 10 ou plus : Colin s'approche d'Estelle avec confiance.</li>
+                                        <li>Si vous obtenez moins de 10 : Colin hésite et trébuche sur ses mots.</li>
+                                    </ul>-->
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="page-num-5">
+                    <!-- Page 3 -->
+                    <div id="page3S" class="page-num-3">
                         <div class="pages-content">
                             <div class="content-inner">
-                                <h1>The End</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-num-6">
-                        <div class="pages-content">
-                            <div class="content-inner">
-                                <h1>The End</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-num-7">
-                        <div class="pages-content">
-                            <div class="content-inner">
-                                <h1>The End</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="page-num-8">
-                        <div class="pages-content">
-                            <div class="content-inner">
-                                <h1>The End</h1>
-                            </div>
-                        </div>
-                    </div>
+                                <h1 id="page3Resultat"></h1>
+                                <div id="page3Text" class="text">
+                                    <!--<p>Jet réussi (10 ou plus) :</p>
+                                    <p>Colin respira profondément et s'approcha d'Estelle. Il lui tendit le bouquet de fleurs avec un sourire timide. Estelle, touchée par son geste, accepta sa demande avec un sourire éclatant.</p>
+                                    <p>"Je serais ravie d'être ta Valentine, Colin," dit-elle.</p>
 
+                                    <p>Jet échoué (moins de 10) :</p>
+                                    <p>Colin trébucha sur une racine et laissa tomber les fleurs. Les amis d'Estelle éclatèrent de rire, mais Estelle, bienveillante, l'aida à se relever.</p>
+                                    <p>"C'est gentil, Colin," dit-elle avec un sourire, "mais je préfère rester amie pour l'instant."</p>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Page 4 -->
+                    <div id="end" class="page-num-4">
+                        <div class="pages-content">
+                            <div class="content-inner">
+                                <h1>La Fin</h1>
+                                <div class="text">
+                                    <p>Quel que soit le résultat, Colin avait fait preuve de courage, et cela comptait. La Saint-Valentin était un jour pour essayer, apprendre, et peut-être rêver à nouveau pour l'année suivante.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-
     </div>
+
 
 
 
@@ -413,6 +414,10 @@
             timeoutId,
             transitionDuration = 500,
             animationDuration = 2000;
+        currentPage = 1;
+
+
+        var dicecontent = document.getElementById("dicecontent");
 
         $('ul > li > a').click(function () {
             reset();
@@ -433,6 +438,17 @@
             $die.attr('data-face', face);
         }
 
+        function hideDice() {
+            $("#dicecontent").css('visibility', 'hidden');
+            $("#st").css('visibility', 'hidden');
+        }
+
+        function showDice(number) {
+            document.getElementById("stText").innerHTML = number + " pour réussir!"
+            $("#dicecontent").css('visibility', 'visible');
+            $("#st").css('visibility', 'visible');
+        }
+
         function reset() {
             $die.attr('data-face', null).removeClass('rolling');
         }
@@ -444,9 +460,69 @@
             timeoutId = setTimeout(function () {
                 $die.removeClass('rolling');
                 rollTo(randomFace());
+                if (currentPage == 2) {
+
+                    if (lastFace >= 10) {
+                        document.getElementById("page3Resultat").innerHTML = "Réussi";
+
+                        p = document.createElement("p");
+                        p.innerHTML = 'Colin respira profondément et s\'approcha d\'Estelle. Il lui tendit le bouquet de fleurs avec un sourire timide. Estelle, touchée par son geste, accepta sa demande avec un sourire éclatant.\"Je serais ravie d\'être ta Valentine, Colin,\" dit-elle.';
+                        document.getElementById("page3Text").append(p);
+
+                        hideDice();
+                        //document.getElementById("page1").hidden = true;
+                        //document.getElementById("page2").hidden = true;
+                    }
+                    else {
+                        document.getElementById("page3Resultat").innerHTML = "Échec...";
+
+                        p = document.createElement("p");
+                        p.innerHTML = 'Colin trébucha sur une racine et laissa tomber les fleurs. Les amis d\'Estelle éclatèrent de rire, mais Estelle, bienveillante, l\'aida à se relever. C\'est gentil, Colin, \" dit-elle avec un sourire, \" mais je préfère rester amie pour l\'instant.';
+                        document.getElementById("page3Text").append(p);
+                        hideDice();
+
+                        //document.getElementById("page3F").hidden = false;
+                        //document.getElementById("page1").hidden = true;
+                        //document.getElementById("page2").hidden = true;
+                    }
+
+                }
             }, animationDuration);
 
+          //            <p>Jet réussi (10 ou plus) :</p>
+          //<p>Colin respira profondément et s'approcha d'Estelle. Il lui tendit le bouquet de fleurs avec un sourire timide. Estelle, touchée par son geste, accepta sa demande avec un sourire éclatant.</p>
+          //<p>"Je serais ravie d'être ta Valentine, Colin," dit-elle.</p>
+
+          //<p>Jet échoué (moins de 10) :</p>
+          //<p>Colin trébucha sur une racine et laissa tomber les fleurs. Les amis d'Estelle éclatèrent de rire, mais Estelle, bienveillante, l'aida à se relever.</p>
+          //<p>"C'est gentil, Colin," dit-elle avec un sourire, "mais je préfère rester amie pour l'instant."</p>
+
             return false;
+        });
+
+        $(window).ready(function () {
+            $('.pages').turn({
+                duration: 1500,
+                width: 620,
+                height: 445,
+                //  acceleration: true,
+                //  display: 'single',
+                // autoCenter: true,
+                turnCorners: "bl,br",
+                elevation: 300,
+                when: {
+                    turned: function (e, page) {
+                        currentPage = page;
+                        if (currentPage == 2) {
+                            showDice(10);
+                        }
+                        else {
+                            hideDice();
+                        }
+                        console.log('Current view: ', $(this).turn('view'));
+                    }
+                }
+            });
         });
 
     </script>
