@@ -354,11 +354,6 @@
                                 <h1>Le Grand Moment</h1>
                                 <div class="text">
                                     <p>Colin se dirigea vers Estelle, qui était assise sous l'arbre du parc, entourée de ses amies. Son cœur battait à tout rompre. Faire un jet de dé pour savoir la suite!</p>
-                                    <!--<p><strong>Jet de dé :</strong></p>
-                                    <ul>
-                                        <li>Si vous obtenez 10 ou plus : Colin s'approche d'Estelle avec confiance.</li>
-                                        <li>Si vous obtenez moins de 10 : Colin hésite et trébuche sur ses mots.</li>
-                                    </ul>-->
                                 </div>
                             </div>
                         </div>
@@ -369,24 +364,63 @@
                             <div class="content-inner">
                                 <h1 id="page3Resultat"></h1>
                                 <div id="page3Text" class="text">
-                                    <!--<p>Jet réussi (10 ou plus) :</p>
-                                    <p>Colin respira profondément et s'approcha d'Estelle. Il lui tendit le bouquet de fleurs avec un sourire timide. Estelle, touchée par son geste, accepta sa demande avec un sourire éclatant.</p>
-                                    <p>"Je serais ravie d'être ta Valentine, Colin," dit-elle.</p>
-
-                                    <p>Jet échoué (moins de 10) :</p>
-                                    <p>Colin trébucha sur une racine et laissa tomber les fleurs. Les amis d'Estelle éclatèrent de rire, mais Estelle, bienveillante, l'aida à se relever.</p>
-                                    <p>"C'est gentil, Colin," dit-elle avec un sourire, "mais je préfère rester amie pour l'instant."</p>-->
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!-- Page 4 -->
-                    <div id="end" class="page-num-4">
+                    <div id="page4" class="page-num-4">
                         <div class="pages-content">
                             <div class="content-inner">
-                                <h1>La Fin</h1>
-                                <div class="text">
-                                    <p>Quel que soit le résultat, Colin avait fait preuve de courage, et cela comptait. La Saint-Valentin était un jour pour essayer, apprendre, et peut-être rêver à nouveau pour l'année suivante.</p>
+                                <h1 id="page4Resultat"></h1>
+                                <div id="page4Text" class="text">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Page 5 -->
+                    <div id="page5" class="page-num-5">
+                        <div class="pages-content">
+                            <div class="content-inner">
+                                <h1 id="page5Resultat"></h1>
+                                <div id="page5Text" class="text">
+                                </div>
+                                <input id="resetButton" hidden type="button" onclick="location.reload()" name="name" value="Recommencer" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 6 -->
+                    <div id="page6" class="page-num-6">
+                        <div class="pages-content">
+                            <div class="content-inner">
+                                <h1 id="page6Resultat"></h1>
+                                <div id="page6Text" class="text">
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Page 7 -->
+                    <div id="page7" class="page-num-7">
+                        <div class="pages-content">
+                            <div class="content-inner">
+                                <h1 id="page7Resultat"></h1>
+                                <div id="page7Text" class="text">
+                                </div>
+                                <input id="resetButton7" hidden type="button" onclick="location.reload()" name="name" value="Recommencer" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Page 8 -->
+
+                    <div id="page8" class="page-num-8">
+                        <div class="pages-content">
+                            <div class="content-inner">
+                                <h1 id="page8Resultat"></h1>
+                                <div id="page8Text" class="text">
                                 </div>
                             </div>
                         </div>
@@ -394,6 +428,12 @@
                 </div>
             </div>
         </div>
+
+
+        <br />
+        <br />
+        <br />
+      
     </div>
 
 
@@ -414,10 +454,15 @@
             timeoutId,
             transitionDuration = 500,
             animationDuration = 2000;
+        isRolling = false;
         currentPage = 1;
+        failedFirstTry = false;
+        failedSecondTry = true;
 
 
         var dicecontent = document.getElementById("dicecontent");
+
+        var completedPages = [];
 
         $('ul > li > a').click(function () {
             reset();
@@ -453,7 +498,37 @@
             $die.attr('data-face', null).removeClass('rolling');
         }
 
+        function fortChamblyDocument(){
+            //Maintenant arrivés au Fort Chambly, les deux profitèrent de l’air frais et du paysage paisible.Après une petite balade le long des sentiers, ils décidèrent de s’installer dans l’herbe, à l’abri d’un grand arbre.
+            //La conversation allait bon train, entre rires sincères et anecdotes légères.À un certain moment, Estelle, avec un sourire malicieux et un petit rire un peu étrange, tendit doucement sa main vers celle de Colin, l'agrippa et la tendit vers elle.
+
+            document.getElementById("page6Resultat").innerHTML = "Fort Chambly";
+
+            p2 = document.createElement("p");
+            p2.innerHTML = 'Maintenant arrivés au Fort Chambly, les deux profitèrent de l\’air frais et du paysage paisible.Après une petite balade le long des sentiers, ils décidèrent de s\’installer dans l\’herbe, à l\’abri d’un grand arbre.La conversation allait bon train, entre rires sincères et anecdotes légères.À un certain moment, Estelle, avec un sourire malicieux et un petit rire un peu étrange, tendit doucement sa main vers celle de Colin, l\'agrippa et la tendit vers elle.';
+            document.getElementById("page6Text").append(p2);
+
+        }
+
+        function texteFin() {
+            //Maintenant arrivés au Fort Chambly, les deux profitèrent de l’air frais et du paysage paisible.Après une petite balade le long des sentiers, ils décidèrent de s’installer dans l’herbe, à l’abri d’un grand arbre.
+            //La conversation allait bon train, entre rires sincères et anecdotes légères.À un certain moment, Estelle, avec un sourire malicieux et un petit rire un peu étrange, tendit doucement sa main vers celle de Colin, l'agrippa et la tendit vers elle.
+
+            document.getElementById("page8Resultat").innerHTML = "Love you!! ❤️";
+
+            p2 = document.createElement("p");
+            p2.innerHTML = 'J’espère que tu as aimé haha! J\'ai passé beaucoup trop de temps à réussir à faire un dé en 3D et un livre avec des pages qui tournent en 3D... Je t\'aime et bien hâte d\'aller manger avec toi!! :) ';
+            document.getElementById("page8Text").append(p2);
+
+        }
+
         $('.randomize, .die').click(function () {
+
+            if (isRolling) {
+                return;
+            }
+
+            isRolling = true;
             $die.addClass('rolling');
             clearTimeout(timeoutId);
 
@@ -469,9 +544,16 @@
                         p.innerHTML = 'Colin respira profondément et s\'approcha d\'Estelle. Il lui tendit le bouquet de fleurs avec un sourire timide. Estelle, touchée par son geste, accepta sa demande avec un sourire éclatant.\"Je serais ravie d\'être ta Valentine, Colin,\" dit-elle.';
                         document.getElementById("page3Text").append(p);
 
-                        hideDice();
-                        //document.getElementById("page1").hidden = true;
-                        //document.getElementById("page2").hidden = true;
+
+
+                        document.getElementById("page4Resultat").innerHTML = "Le chemin";
+
+                        p2 = document.createElement("p");
+                        p2.innerHTML = 'Rassuré, Colin proposa aussitôt :\"Que dirais-tu d\’une promenade au Fort Chambly pour fêter ça ?\" \"Excellente idée ! J\’adore cet endroit,\" répondit-elle en riant. Colin et Estelle se déplacent vers le fort Chambly';
+                        document.getElementById("page4Text").append(p2);
+
+
+                        completedPages.push(2);
                     }
                     else {
                         document.getElementById("page3Resultat").innerHTML = "Échec...";
@@ -479,23 +561,94 @@
                         p = document.createElement("p");
                         p.innerHTML = 'Colin trébucha sur une racine et laissa tomber les fleurs. Les amis d\'Estelle éclatèrent de rire, mais Estelle, bienveillante, l\'aida à se relever. C\'est gentil, Colin, \" dit-elle avec un sourire, \" mais je préfère rester amie pour l\'instant.';
                         document.getElementById("page3Text").append(p);
-                        hideDice();
+                        failedFirstTry = true;
 
-                        //document.getElementById("page3F").hidden = false;
-                        //document.getElementById("page1").hidden = true;
-                        //document.getElementById("page2").hidden = true;
+
+
+                        document.getElementById("page4Resultat").innerHTML = "La blague";
+
+                        p2 = document.createElement("p");
+                        p2.innerHTML = 'Colin, embarrassé mais déterminé, ramassa rapidement les fleurs tout en disant avec un sourire maladroit : \"Eh bien, si je suis tombé pour toi au sens propre, peut-être pourrais-tu tomber pour moi au sens figuré ?';
+                        document.getElementById("page4Text").append(p2);
+                        completedPages.push(2);
                     }
 
                 }
+                else if (currentPage == 4 && failedFirstTry) {
+
+                    if (lastFace >= 12) {
+                        document.getElementById("page5Resultat").innerHTML = "Réussi";
+                        p = document.createElement("p");
+                        p.innerHTML = 'Les amis d\'Estelle échangèrent des regards surpris, mais Estelle éclata de rire. \"Tu es vraiment quelque chose, Colin,\" répondit - elle avec un sourire chaleureux. \"D\'accord, tu as gagné ta chance pour aujourd\'hui. Allons-y !\" Estelle et colin décide donc d\'aller au ford chambly';
+                        document.getElementById("page5Text").append(p);
+                        completedPages.push(4);
+                        fortChamblyDocument();
+                    }
+                    else {
+                        document.getElementById("page5Resultat").innerHTML = "Échec...";
+                        p = document.createElement("p");
+                        p.innerHTML = 'Estelle esquissa un sourire poli et répondit doucement :"Colin, c\'est gentil, vraiment, mais... je préfère qu\'on reste amis.\"Les amis d\'Estelle rirent doucement en s\'éloignant avec elle, tandis que Colin, malgré la déception, se dit qu\'au moins il avait eu le courage d\'essayer.';
+                        document.getElementById("page5Text").append(p);
+                        completedPages.push(4);
+
+                        document.getElementById("resetButton").hidden = false;
+
+                    }
+                        
+                }
+                else if (currentPage == 4 && failedFirstTry == false) {
+
+                    if (lastFace >= 8) {
+                        document.getElementById("page5Resultat").innerHTML = "Réussi";
+                        p = document.createElement("p");
+                        p.innerHTML = 'Le chemin vers le Fort Chambly fut empli de rires et de conversations animées. La nervosité initiale de Colin s’estompa rapidement à mesure qu\’ils apprenaient à mieux se connaître. Sous le ciel bleu et le doux vent de février, leur complicité naissante rendait cette journée inoubliable.';
+                        document.getElementById("page5Text").append(p);
+                        completedPages.push(4);
+                        fortChamblyDocument();
+
+                    }
+                    else {
+                        document.getElementById("page5Resultat").innerHTML = "Échec...";
+                        p = document.createElement("p");
+                        p.innerHTML = 'Le chemin vers le Fort Chambly fut un peu maladroit. Colin essayait de détendre l\’atmosphère avec des blagues, certaines faisant rire Estelle, d\’autres tombant un peu à plat. Malgré tout, l\’air frais et le cadre paisible finirent par apaiser le malaise, et ils discutèrent plus naturellement en arrivant au Fort.';
+                        document.getElementById("page5Text").append(p);
+                        completedPages.push(4);
+                        fortChamblyDocument();
+
+
+                    }
+
+                }
+                else if (currentPage == 6) {
+                    if (lastFace >= 5) {
+                        failedSecondTry = false;
+                        document.getElementById("page7Resultat").innerHTML = "Réussi";
+                        p = document.createElement("p");
+                        p.innerHTML = 'Colin, le cœur battant, s’approcha doucement. Estelle ne recula pas, et leurs lèvres se rencontrèrent dans un baiser tendre et sincère. Elle sourit ensuite, glissant sa main dans la sienne, avant de poser sa tête sur son épaule. Le moment était parfait, simple et inoubliable. Félicitations! Tu peux maintenant aller à la page suivante :)';
+                        document.getElementById("page7Text").append(p);
+                        completedPages.push(6);
+                        texteFin();
+
+                    }
+                    else {
+                        document.getElementById("page7Resultat").innerHTML = "Échec...";
+                        p = document.createElement("p");
+                        p.innerHTML = 'Colin, surpris par son geste brusque, paniqua et pris de court, s’éclipsa en courant, rouge de honte. Estelle, confuse, le regarda s’éloigner, un mélange de surprise et de rire dans les yeux. "Attends ! Colin !" appela - t - elle, mais il était déjà trop loin.';
+                        document.getElementById("page7Text").append(p);
+                        completedPages.push(6);
+                        document.getElementById("resetButton7").hidden = false;
+                        failedSecondTry = true;
+                    }
+                }
+
+                setTimeout(function () {
+                    hideDice();
+                    isRolling = false;
+
+                },2000)
+
             }, animationDuration);
 
-          //            <p>Jet réussi (10 ou plus) :</p>
-          //<p>Colin respira profondément et s'approcha d'Estelle. Il lui tendit le bouquet de fleurs avec un sourire timide. Estelle, touchée par son geste, accepta sa demande avec un sourire éclatant.</p>
-          //<p>"Je serais ravie d'être ta Valentine, Colin," dit-elle.</p>
-
-          //<p>Jet échoué (moins de 10) :</p>
-          //<p>Colin trébucha sur une racine et laissa tomber les fleurs. Les amis d'Estelle éclatèrent de rire, mais Estelle, bienveillante, l'aida à se relever.</p>
-          //<p>"C'est gentil, Colin," dit-elle avec un sourire, "mais je préfère rester amie pour l'instant."</p>
 
             return false;
         });
@@ -513,8 +666,29 @@
                 when: {
                     turned: function (e, page) {
                         currentPage = page;
-                        if (currentPage == 2) {
+                        if (page == 3) {
+                            currentPage = 2
+                        }
+                        else if (page == 5) {
+                            currentPage = 4
+                        }
+                        else if (page == 7) {
+                            currentPage = 6
+                        }
+                        if (currentPage == 2 && completedPages.includes(2) == false) {
                             showDice(10);
+                        }
+                        else if (currentPage == 4 && completedPages.includes(4) == false && completedPages.includes(2) && failedFirstTry) {
+                            showDice(12);
+                        }
+                        else if (currentPage == 4 && completedPages.includes(4) == false && completedPages.includes(2) && failedFirstTry == false) {
+                            showDice(8);
+                        }
+                        else if (currentPage == 6 && completedPages.includes(4) && completedPages.includes(2) && failedFirstTry == false && completedPages.includes(6) == false) {
+                            showDice(5);
+                        }
+                        else if (currentPage == 8 && completedPages.includes(6) && failedSecondTry == false) {
+                            setInterval(createHeart, 200);
                         }
                         else {
                             hideDice();
@@ -523,6 +697,74 @@
                     }
                 }
             });
+
+
+
+            // Function to create falling hearts
+            function createHeart() {
+                // Create a heart element
+                const heart = document.createElement("div");
+                heart.textContent = "❤️"; // Heart emoji
+                heart.style.position = "absolute";
+                heart.style.fontSize = "30px"; // Size of the heart emoji
+                heart.style.left = Math.random() * 95 + "vw"; // Random horizontal position
+                heart.style.top = "-10px"; // Start from above the screen
+
+                // Random position for horizontal placement
+                heart.style.left = Math.random() * 95 + "vw"; // Position horizontally within the viewport
+                heart.style.top = "-10px"; // Start from above the screen
+
+                // Randomize animation duration (speed of falling)
+                heart.style.animation = `fall ${Math.random() * 2 + 3}s linear`; // Random speed for each heart
+
+                // Append the heart to the body
+                document.body.appendChild(heart);
+
+                // Remove heart after animation ends
+                heart.addEventListener("animationend", () => {
+                    heart.remove();
+                });
+            }
+
+            function createRain() {
+                // Create a heart element
+                const heart = document.createElement("div");
+                heart.textContent = "🌧️"; // Heart emoji
+                heart.style.position = "absolute";
+                heart.style.fontSize = "30px"; // Size of the heart emoji
+                heart.style.left = Math.random() * 95 + "vw"; // Random horizontal position
+                heart.style.top = "-10px"; // Start from above the screen
+
+                // Random position for horizontal placement
+                heart.style.left = Math.random() * 95 + "vw"; // Position horizontally within the viewport
+                heart.style.top = "-10px"; // Start from above the screen
+
+                // Randomize animation duration (speed of falling)
+                heart.style.animation = `fall ${Math.random() * 2 + 3}s linear`; // Random speed for each heart
+
+                // Append the heart to the body
+                document.body.appendChild(heart);
+
+                // Remove heart after animation ends
+                heart.addEventListener("animationend", () => {
+                    heart.remove();
+                });
+            }
+
+
+            // Add the falling animation via JavaScript
+            const style = document.createElement("style");
+            style.innerHTML = `
+            @keyframes fall {
+                0% {
+                    transform: translateY(0);
+                }
+                100% {
+                    transform: translateY(95vh); /* Move down through the viewport */
+                }
+            }
+        `;
+            document.head.appendChild(style);
         });
 
     </script>
