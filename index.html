@@ -341,8 +341,10 @@
                             <div class="content-inner">
                                 <h1>Introduction</h1>
                                 <div class="text">
-                                    <p>Colin, un garçon timide mais plein de rêves, voulait demander à Estelle, la fille la plus belle du monde, d'être sa Valentine. Il avait tout préparé : une lettre, un bouquet de fleurs et son courage, fragile mais sincère.</p>
-                                    <p>Le jour de la Saint-Valentin était arrivé, et Colin savait qu'il devait tenter sa chance. Mais comment s'y prendre ? C'était le moment où le destin, ou peut-être un jet de dés, déciderait de son avenir.</p>
+                                    <p>
+                                        Colin, un garçon timide mais plein de rêves, voulait demander à Estelle, la fille la plus belle du monde, d'être sa Valentine. Il avait tout préparé : une lettre, un bouquet de fleurs et son courage, fragile mais sincère.
+                                        Le jour de la Saint-Valentin était arrivé, et Colin savait qu'il devait tenter sa chance. Mais comment s'y prendre ? C'était le moment où le destin, ou peut-être un jet de dés, déciderait de son avenir. (Tourner la page avec la souris en haut à droite)
+                                    </p>
                                 </div>
                             </div>
                         </div>
@@ -353,7 +355,7 @@
                             <div class="content-inner">
                                 <h1>Le Grand Moment</h1>
                                 <div class="text">
-                                    <p>Colin se dirigea vers Estelle, qui était assise sous l'arbre du parc, entourée de ses amies. Son cœur battait à tout rompre. Faire un jet de dé pour savoir la suite!</p>
+                                    <p>Colin se dirigea vers Estelle, qui était assise sous l'arbre d'un parc, entourée de ses amies. Son cœur battait à tout rompre. Faire un jet de dé pour savoir la suite!</p>
                                 </div>
                             </div>
                         </div>
@@ -489,7 +491,7 @@
         }
 
         function showDice(number) {
-            document.getElementById("stText").innerHTML = number + " pour réussir!"
+            document.getElementById("stText").innerHTML ="Plus que " + (number-1) + " pour réussir!"
             $("#dicecontent").css('visibility', 'visible');
             $("#st").css('visibility', 'visible');
         }
@@ -620,7 +622,7 @@
 
                 }
                 else if (currentPage == 6) {
-                    if (lastFace >= 5) {
+                    if (lastFace >= 2) {
                         failedSecondTry = false;
                         document.getElementById("page7Resultat").innerHTML = "Réussi";
                         p = document.createElement("p");
@@ -645,7 +647,7 @@
                     hideDice();
                     isRolling = false;
 
-                },2000)
+                },1500)
 
             }, animationDuration);
 
@@ -685,7 +687,7 @@
                             showDice(8);
                         }
                         else if (currentPage == 6 && completedPages.includes(4) && completedPages.includes(2) && failedFirstTry == false && completedPages.includes(6) == false) {
-                            showDice(5);
+                            showDice(2);
                         }
                         else if (currentPage == 8 && completedPages.includes(6) && failedSecondTry == false) {
                             setInterval(createHeart, 200);
