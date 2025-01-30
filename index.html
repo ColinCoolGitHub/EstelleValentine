@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html id="html" lang="en" class="">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -28,17 +28,11 @@
             }
         }
 
+
+
         body {
             background: radial-gradient(circle, #ff9595, #ff668f); /* Valentine's gradient background */
             padding: 20px;
-        }
-
-        .content {
-            margin: auto auto;
-            position: relative;
-            width: 200px;
-            height: 200px;
-            perspective: 1500px;
         }
 
         .st {
@@ -328,161 +322,288 @@
             #bgAudioToggle.active {
                 background: green;
             }
+
+
+        .cinematic {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            text-align: center;
+            opacity: 1;
+            z-index: 999;
+            transition: opacity 2s ease-in-out;
+        }
+        .start-btn {
+            padding: 15px 30px;
+            font-size: 20px;
+            background: radial-gradient(circle, #ff9595, #ff668f);
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 10px;
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .cinematic.hide {
+            opacity: 0;
+        }
+            .start-btn.show {
+                opacity: 1;
+            }
+
+        .introEffect {
+            margin: 0;
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+            background: black;
+            overflow: hidden;
+            transition: background 2s ease-in-out !important;
+            opacity: 1;
+            z-index: 999;
+        }
+            .introEffect.hide {
+                background: #ff7a8f;
+            }
+
+        #showPage {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+        #showPage.now {
+            opacity: 1;
+        }
+
+        .page-turn-arrow {
+            position: absolute;
+            top: 10px; /* Adjust based on your design */
+            right: 50px; /* Adjust based on your design */
+            font-size: 30px;
+            color: #333;
+            opacity: 0;
+            z-index: 10; /* Ensure the arrow is above other elements */
+            transition: opacity 1s ease-in-out;
+        }
+
+            .page-turn-arrow.visible {
+                opacity: 1; /* Visible when this class is added */
+            }
+
+
+
+
+        .content {
+            margin: auto auto;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            perspective: 1500px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+
+        }
+
+            .content:hover {
+                transform: scale(1.1);
+            }
+
+            .content.show {
+                opacity: 1;
+            }
+
+
+        .st {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+            .st.show {
+                opacity: 1;
+            }
+
     </style>
 </head>
-<body>
-
-    <div id="dicecontent" class="content">
-        <div class="die">
-            <figure class="face face-1"></figure>
-            <figure class="face face-2"></figure>
-            <figure class="face face-3"></figure>
-            <figure class="face face-4"></figure>
-            <figure class="face face-5"></figure>
-            <figure class="face face-6"></figure>
-            <figure class="face face-7"></figure>
-            <figure class="face face-8"></figure>
-            <figure class="face face-9"></figure>
-            <figure class="face face-10"></figure>
-            <figure class="face face-11"></figure>
-            <figure class="face face-12"></figure>
-            <figure class="face face-13"></figure>
-            <figure class="face face-14"></figure>
-            <figure class="face face-15"></figure>
-            <figure class="face face-16"></figure>
-            <figure class="face face-17"></figure>
-            <figure class="face face-18"></figure>
-            <figure class="face face-19"></figure>
-            <figure class="face face-20"></figure>
-        </div>
+<body id="body" class="introEffect">
+    <div class="cinematic" id="cinematic">
+        <p>Il était une fois, un jeune homme nommé Colin...</p>
+        <p>Pour cette Saint-Valentin, il veut demander à Estelle d'être sa Valentine... mais il a besoin de ton aide !</p>
+        <button class="start-btn" id="startBtn" style="visibility:hidden" onclick="startGame()">Prête à aider Colin ?</button>
     </div>
+    <div id="showPage" style="visibility: hidden">
 
-    <div id="st" class="st">
-        <p id="stText">1</p>
-    </div>
 
-    <button id="bgAudioToggle" onclick="toggleBgAudio()">Musique : NON</button>
-    <!-- Background Looping Audio -->
-    <audio id="bgAudio" loop>
-        <source src="bg3ost.mp3" type="audio/mpeg">
-    </audio>
-    <div class="container">
-        <div class="book-wrapper">
-            <div class="book-cover">
-                <img src="bookcover2.png" alt="Couverture du livre">
+
+        <div id="dicecontent" class="content">
+            <div class="die">
+                <figure class="face face-1"></figure>
+                <figure class="face face-2"></figure>
+                <figure class="face face-3"></figure>
+                <figure class="face face-4"></figure>
+                <figure class="face face-5"></figure>
+                <figure class="face face-6"></figure>
+                <figure class="face face-7"></figure>
+                <figure class="face face-8"></figure>
+                <figure class="face face-9"></figure>
+                <figure class="face face-10"></figure>
+                <figure class="face face-11"></figure>
+                <figure class="face face-12"></figure>
+                <figure class="face face-13"></figure>
+                <figure class="face face-14"></figure>
+                <figure class="face face-15"></figure>
+                <figure class="face face-16"></figure>
+                <figure class="face face-17"></figure>
+                <figure class="face face-18"></figure>
+                <figure class="face face-19"></figure>
+                <figure class="face face-20"></figure>
             </div>
-            <div class="pages-container">
-                <div class="pages">
-                    <!-- Page 1 -->
-                    <div id="page1" class="page-num-1">
-                        <div class="pages-content">
-                            <div class="pages-background"></div>
-                            <div class="content-inner">
-                                <h1>Introduction</h1>
+        </div>
 
-                                <div class="text">
+        <div id="st" class="st">
+            <p id="stText">1</p>
+        </div>
 
-                                    <p>
-                                        Colin, un garçon timide mais plein de rêves, voulait demander à Estelle, la fille la plus belle du monde, d'être sa Valentine. Il avait tout préparé : une lettre, un bouquet de fleurs et son courage, fragile mais sincère.
-                                        Le jour de la Saint-Valentin était arrivé, et Colin savait qu'il devait tenter sa chance. Mais comment s'y prendre ? C'était le moment où le destin, ou peut-être un jet de dés, déciderait de son avenir. (Tourner la page avec la souris en haut à droite)
-                                    </p>
-                                </div>
+        <button id="bgAudioToggle" onclick="toggleBgAudio()">Musique : NON</button>
+        <!-- Background Looping Audio -->
+        <audio id="bgAudio" loop>
+            <source src="bg3ost.mp3" type="audio/mpeg">
+        </audio>
 
+        <audio id="bg3s">
+            <source src="dice.mp3" type="audio/mpeg">
+        </audio>
 
+        <div class="container">
+            <div class="book-wrapper">
+                <div class="book-cover">
+                    <img src="bookcover2.png" alt="Couverture du livre">
+                </div>
+                <div class="pages-container">
+                    <div class="pages">
+                        <!-- Page 1 -->
+                        <div id="page1" class="page-num-1">
+                            <div class="pages-content">
+                                <div class="pages-background"></div>
+                                <div class="content-inner">
+                                    <h1>Introduction</h1>
 
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Page 2 -->
-                    <div id="page2" class="page-num-2">
-                        <div class="pages-content">
-                            <div class="content-inner">
-                                <h1>Le Grand Moment</h1>
+                                    <div class="text">
 
-                                <div class="text">
-                                    <p>Colin se dirigea vers Estelle, qui était assise sous l'arbre d'un parc, entourée de ses amies. Son cœur battait à tout rompre. Faire un jet de dé pour savoir la suite!</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Page 3 -->
-                    <div id="page3S" class="page-num-3">
-                        <div class="pages-content">
-                            <div class="content-inner">
-                                <h1 id="page3Resultat"></h1>
-                                <div id="page3Text" class="text">
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Page 4 -->
-                    <div id="page4" class="page-num-4">
-                        <div class="pages-content">
-                            <div class="content-inner">
-                                <h1 id="page4Resultat"></h1>
-                                <div id="page4Text" class="text">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Page 5 -->
-                    <div id="page5" class="page-num-5">
-                        <div class="pages-content">
-                            <div class="content-inner">
-                                <h1 id="page5Resultat"></h1>
-                                <div id="page5Text" class="text">
-                                </div>
-                                <input id="resetButton" hidden type="button" onclick="location.reload()" name="name" value="Recommencer" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Page 6 -->
-                    <div id="page6" class="page-num-6">
-                        <div class="pages-content">
-                            <div class="content-inner">
-                                <h1 id="page6Resultat"></h1>
-                                <div id="page6Text" class="text">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Page 7 -->
-                    <div id="page7" class="page-num-7">
-                        <div class="pages-content">
-                            <div class="content-inner">
-                                <h1 id="page7Resultat"></h1>
-                                <div id="page7Text" class="text">
-                                </div>
-                                <input id="resetButton7" hidden type="button" onclick="location.reload()" name="name" value="Recommencer" />
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Page 8 -->
-
-                    <div id="page8" class="page-num-8">
-                        <div class="pages-content">
-                            <div class="content-inner">
-                                <h1 id="page8Resultat">'</h1>
-
-                                <div id="page8Text" class="text">
-                                </div>
-                                <div id="secretAudio" style="visibility: hidden;">
-                                    <audio id="audioPlayer">
-                                        <source src="astarion-tts-file.wav" type="audio/mpeg">
-                                        Your browser does not support the audio element.
-                                    </audio>
-
-                                    <div>
-                                        <button onclick="playAudio()">▶ Play</button>
-                                        <button onclick="pauseAudio()">⏸ Pause</button>
+                                        <p>
+                                            Colin, un garçon timide mais plein de rêves, voulait demander à Estelle, la fille la plus belle du monde, d'être sa Valentine. Il avait tout préparé : une lettre, un bouquet de fleurs et son courage, fragile mais sincère.
+                                            Le jour de la Saint-Valentin était arrivé, et Colin savait qu'il devait tenter sa chance. Mais comment s'y prendre ? C'était le moment où le destin, ou peut-être un jet de dés, déciderait de son avenir.
+                                        </p>
                                     </div>
 
-                                    <div id="progressContainer" onclick="seekAudio(event)">
-                                        <div id="progressBar"></div>
+
+
+                                </div>
+                                <div id="pageturnArrow" class="page-turn-arrow">
+                                    &#8594; <!-- Right arrow symbol -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page 2 -->
+                        <div id="page2" class="page-num-2">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1>Le Grand Moment</h1>
+
+                                    <div class="text">
+                                        <p>Colin se dirigea vers Estelle, qui était assise sous l'arbre d'un parc, entourée de ses amies. Son cœur battait à tout rompre. Faire un jet de dé pour savoir la suite!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page 3 -->
+                        <div id="page3S" class="page-num-3">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page3Resultat"></h1>
+                                    <div id="page3Text" class="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page 4 -->
+                        <div id="page4" class="page-num-4">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page4Resultat"></h1>
+                                    <div id="page4Text" class="text">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page 5 -->
+                        <div id="page5" class="page-num-5">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page5Resultat"></h1>
+                                    <div id="page5Text" class="text">
+                                    </div>
+                                    <input id="resetButton" hidden type="button" onclick="location.reload()" name="name" value="Recommencer" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 6 -->
+                        <div id="page6" class="page-num-6">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page6Resultat"></h1>
+                                    <div id="page6Text" class="text">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page 7 -->
+                        <div id="page7" class="page-num-7">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page7Resultat"></h1>
+                                    <div id="page7Text" class="text">
+                                    </div>
+                                    <input id="resetButton7" hidden type="button" onclick="location.reload()" name="name" value="Recommencer" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 8 -->
+
+                        <div id="page8" class="page-num-8">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page8Resultat">'</h1>
+
+                                    <div id="page8Text" class="text">
+                                    </div>
+                                    <div id="secretAudio" style="visibility: hidden;">
+                                        <audio id="audioPlayer">
+                                            <source src="astarion-tts-file.wav" type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                        </audio>
+
+                                        <div>
+                                            <button onclick="playAudio()">▶ Play</button>
+                                            <button onclick="pauseAudio()">⏸ Pause</button>
+                                        </div>
+
+                                        <div id="progressContainer" onclick="seekAudio(event)">
+                                            <div id="progressBar"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -490,25 +611,58 @@
                     </div>
                 </div>
             </div>
+
+
         </div>
 
 
-        <br />
-        <br />
-        <br />
-
     </div>
-
-
     <!--astarion-tts-file.wav-->
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="bookjs.js"></script>
     <script>
-    </script>
-    <script>
+        setTimeout(() => {
+            //document.getElementById("startBtn").style.display = "block";
+            $("#startBtn").css('visibility', 'visible');
+            document.getElementById("startBtn").classList.add("show");
 
+        }, 1500);
+
+        function startGame() {
+            document.getElementById("cinematic").classList.add("hide")
+            document.getElementById("startBtn").classList.remove("show");
+            document.getElementById("startBtn").classList.remove("show");
+
+            //document.getElementById("html").classList.add("hide")
+            document.getElementById("body").classList.add("hide")
+            setTimeout(() => {
+
+                //$("#html").removeClass();
+                $("#body").removeClass();
+                $("#cinematic").css('visibility', 'hidden');
+                document.getElementById("cinematic").hidden = true;
+
+                $("#startBtn").css('visibility', 'hidden');
+                $("#startBtn").removeClass();
+                $("#cinematic").removeClass();
+
+
+
+                document.getElementById("showPage").classList.add("now");
+                $("#showPage").css('visibility', 'visible');
+
+                setTimeout(() => {
+                    const arrow = document.getElementById("pageturnArrow");
+                    if (arrow) {
+                        arrow.classList.add("visible");
+                    }
+
+                }, 10000);
+
+            }, 2000);
+        }
 
         var $die = $('.die'),
             sides = 20,
@@ -534,6 +688,8 @@
         const progressContainer = document.getElementById("progressContainer");
         const progressBar = document.getElementById("progressBar");
 
+        var musicOff = false;
+
         function playAudio() {
             astarionAudio = true;
             bgAudio.pause();
@@ -546,6 +702,17 @@
             audio.pause();
         }
 
+        function playDiceSound() {
+
+            if (musicOff) {
+                return;
+            }
+
+            const s = document.getElementById("bg3s");
+            s.volume = 0.5;
+            s.play()
+        }
+
         function updateProgress() {
             const progressPercent = (audio.currentTime / audio.duration) * 100;
             progressBar.style.width = `${progressPercent}%`;
@@ -554,10 +721,12 @@
             bgAudio.volume = 0.1; // 30% volume
 
             if (bgAudio.paused) {
+                musicOff = false;
                 bgAudio.play();
                 bgAudioToggle.classList.add("active");
                 bgAudioToggle.textContent = "Musique : OUI";
             } else {
+                musicOff = true;
                 bgAudio.pause();
                 bgAudioToggle.classList.remove("active");
                 bgAudioToggle.textContent = "Musique : NON";
@@ -602,15 +771,35 @@
             $die.attr('data-face', face);
         }
 
-        function hideDice() {
-            $("#dicecontent").css('visibility', 'hidden');
-            $("#st").css('visibility', 'hidden');
+        function hideDice(now) {
+
+            if (now) {
+                document.getElementById("dicecontent").classList.remove("show")
+                document.getElementById("st").classList.remove("show")
+                $("#dicecontent").css('visibility', 'hidden');
+                $("#st").css('visibility', 'hidden');
+                isRolling = false;
+            }
+            else {
+                document.getElementById("dicecontent").classList.remove("show")
+                document.getElementById("st").classList.remove("show")
+                setTimeout(() => {
+                    $("#dicecontent").css('visibility', 'hidden');
+                    $("#st").css('visibility', 'hidden');
+                    isRolling = false;
+                }, 1500);
+            }
+      
         }
 
         function showDice(number) {
             document.getElementById("stText").innerHTML = number + " et plus pour réussir"
             $("#dicecontent").css('visibility', 'visible');
             $("#st").css('visibility', 'visible');
+            document.getElementById("dicecontent").classList.add("show")
+            document.getElementById("st").classList.add("show")
+
+
         }
 
         function reset() {
@@ -636,7 +825,7 @@
             document.getElementById("page8Resultat").innerHTML = "Love you!! ❤️";
 
             p2 = document.createElement("p");
-            p2.innerHTML = 'J’espère que tu as aimé haha! J\'ai passé beaucoup trop de temps à réussir à faire un dé en 3D et un livre avec des pages qui tournent en 3D... Je t\'aime et bien hâte d\'aller manger avec toi!! :). Aussi... voici un audi secret d\'astarion... ';
+            p2.innerHTML = 'J’espère que tu as aimé! J\'ai passé beaucoup trop de temps à faire un dé en 3D, un livre avec des pages qui tournent, des animations et audio... Je t\'aime et bien hâte d\'aller manger avec toi!! :). Aussi... astarion avait un message pour toi d\'astarion... ';
             document.getElementById("page8Text").append(p2);
 
         }
@@ -650,11 +839,11 @@
             isRolling = true;
             $die.addClass('rolling');
             clearTimeout(timeoutId);
-
+            playDiceSound();
             timeoutId = setTimeout(function () {
                 $die.removeClass('rolling');
                 rollTo(randomFace());
-                if (currentPage == 2) {
+                if (currentPage == 2 && completedPages.includes(2) == false) {
 
                     if (lastFace >= 10) {
                         document.getElementById("page3Resultat").innerHTML = "Réussi";
@@ -687,13 +876,13 @@
                         document.getElementById("page4Resultat").innerHTML = "La blague";
 
                         p2 = document.createElement("p");
-                        p2.innerHTML = 'Colin, embarrassé mais déterminé, ramassa rapidement les fleurs tout en disant avec un sourire maladroit : \"Eh bien, si je suis tombé pour toi au sens propre, peut-être pourrais-tu tomber pour moi au sens figuré ?';
+                        p2.innerHTML = 'Colin, embarrassé mais déterminé, ramassa rapidement les fleurs tout en disant avec un sourire maladroit : \"Eh bien, si je dois faire un jet de sauvegarde contre la chute, peut-être pourrais-tu échouer à ton jet de sauvegarde contre mon charme ?\"';
                         document.getElementById("page4Text").append(p2);
                         completedPages.push(2);
                     }
 
                 }
-                else if (currentPage == 4 && failedFirstTry) {
+                else if (currentPage == 4 && failedFirstTry && completedPages.includes(4) == false) {
 
                     if (lastFace >= 12) {
                         document.getElementById("page5Resultat").innerHTML = "Réussi";
@@ -715,7 +904,7 @@
                     }
 
                 }
-                else if (currentPage == 4 && failedFirstTry == false) {
+                else if (currentPage == 4 && failedFirstTry == false && completedPages.includes(4) == false) {
 
                     if (lastFace >= 8) {
                         document.getElementById("page5Resultat").innerHTML = "Réussi";
@@ -738,7 +927,7 @@
                     }
 
                 }
-                else if (currentPage == 6) {
+                else if (currentPage == 6 && completedPages.includes(6) == false) {
                     if (lastFace >= 2) {
                         failedSecondTry = false;
                         document.getElementById("page7Resultat").innerHTML = "Réussi";
@@ -763,7 +952,6 @@
 
                 setTimeout(function () {
                     hideDice();
-                    isRolling = false;
 
                 }, 1500)
 
@@ -789,6 +977,15 @@
                 turnCorners: "bl,br",
                 elevation: 300,
                 when: {
+                    turning: function (event, page) {
+                        console.log("Attempting to turn to page:", page);
+
+                        hideDice(true);
+                        if (isRolling) {
+                            console.log("Page turning blocked!");
+                            event.preventDefault(); // Prevents the page from turning
+                        }
+                    },
                     turned: function (e, page) {
                         currentPage = page;
                         if (page == 3) {
@@ -818,7 +1015,6 @@
                         else {
                             hideDice();
                         }
-                        console.log('Current view: ', $(this).turn('view'));
                     }
                 }
             });
@@ -880,15 +1076,15 @@
             // Add the falling animation via JavaScript
             const style = document.createElement("style");
             style.innerHTML = `
-                        @keyframes fall {
-                            0% {
-                                transform: translateY(0);
-                            }
-                            100% {
-                                transform: translateY(95vh); /* Move down through the viewport */
-                            }
-                        }
-                    `;
+                                    @keyframes fall {
+                                        0% {
+                                            transform: translateY(0);
+                                        }
+                                        100% {
+                                            transform: translateY(95vh); /* Move down through the viewport */
+                                        }
+                                    }
+                                `;
             document.head.appendChild(style);
         });
 
