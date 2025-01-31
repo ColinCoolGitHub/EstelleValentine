@@ -908,6 +908,7 @@
             //La conversation allait bon train, entre rires sincères et anecdotes légères.À un certain moment, Estelle, avec un sourire malicieux et un petit rire un peu étrange, tendit doucement sa main vers celle de Colin, l'agrippa et la tendit vers elle.
 
             localStorage.setItem("finishedGame", "true");
+
             document.getElementById("page10Resultat").innerHTML = "Love you!! ❤️";
 
             p2 = document.createElement("p");
@@ -1181,13 +1182,27 @@
 
 
 
-            // Function to create falling hearts
             function createHeart() {
-                // Create an img element for the heart
-                const heart = document.createElement("img");
-                heart.src = "favicon.webp"; // Path to your .webp heart image
+                // Create an img element or text node for the heart
+                const heart = document.createElement("div");
+
+                // Randomize between Zelda heart image and normal heart emoji
+                const heartChoice = Math.random() < 0.1; // 50% chance for each type
+
+                if (heartChoice) {
+                    // Zelda heart image
+                    const zeldaHeart = document.createElement("img");
+                    zeldaHeart.src = "favicon.webp"; // Path to your Zelda heart image
+                    zeldaHeart.style.width = "30px"; // Set the size of the Zelda heart image
+                    heart.appendChild(zeldaHeart);
+                } else {
+                    // Normal heart emoji
+                    heart.textContent = "❤️"; // Heart emoji
+                    heart.style.fontSize = "30px"; // Size of the heart emoji
+                }
+
+                // Set common styles for the falling heart
                 heart.style.position = "absolute";
-                heart.style.width = "30px"; // Set the size of the heart image
                 heart.style.left = Math.random() * 95 + "vw"; // Random horizontal position
                 heart.style.top = "-10px"; // Start from above the screen
 
