@@ -393,7 +393,7 @@
             position: absolute;
             top: 10px; /* Adjust based on your design */
             right: 50px; /* Adjust based on your design */
-            font-size: 30px;
+            font-size: 50px;
             color: #333;
             opacity: 0;
             z-index: 10; /* Ensure the arrow is above other elements */
@@ -615,7 +615,7 @@
                                         </audio>
 
                                         <div>
-                                            <button onclick="playAudio()">▶ Play</button>
+                                            <button onclick="playAudio()">▶ Jouer</button>
                                         </div>
 
                                         <div id="progressContainer" onclick="seekAudio(event)">
@@ -1187,7 +1187,7 @@
                 const heart = document.createElement("div");
 
                 // Randomize between Zelda heart image and normal heart emoji
-                const heartChoice = Math.random() < 0.1; // 50% chance for each type
+                const heartChoice = Math.random() < 0.2; // 50% chance for each type
 
                 if (heartChoice) {
                     // Zelda heart image
