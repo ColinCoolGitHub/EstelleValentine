@@ -497,6 +497,10 @@
             <source src="dice.mp3" type="audio/mpeg">
         </audio>
 
+        <audio id="win">
+            <source src="win.mp3" type="audio/mpeg">
+        </audio>
+
         <div class="container">
             <div class="book-wrapper">
                 <div class="book-cover">
@@ -729,12 +733,14 @@
         failedThirdTry = true;
         let isBgAudioStarted = false;
         let astarionAudio = false;
-
+        var playedEndingAudio = false;
         var diceTimeoutId = null;
         var isTurningDice = false;
         var dicecontent = document.getElementById("dicecontent");
-
+        var isStillShowingDice = false;
         var completedPages = [];
+
+        const winAudio = document.getElementById("win");
 
         const bgAudio = document.getElementById("bgAudio");
         const bgAudioToggle = document.getElementById("bgAudioToggle");
@@ -742,6 +748,7 @@
         const progressContainer = document.getElementById("progressContainer");
         const progressBar = document.getElementById("progressBar");
 
+        var wongame = false;
         var musicOff = false;
 
         function playAudio() {
@@ -845,6 +852,7 @@
                 $("#showRadio").css('visibility', 'hidden');
                 $("#dicecontent").css('visibility', 'hidden');
                 $("#st").css('visibility', 'hidden');
+                isStillShowingDice = false;
             }
             else {
                 document.getElementById("dicecontent").classList.remove("show")
@@ -853,6 +861,7 @@
                     $("#showRadio").css('visibility', 'hidden');
                     $("#dicecontent").css('visibility', 'hidden');
                     $("#st").css('visibility', 'hidden');
+                    isStillShowingDice = false;
                 }, 1500);
             }
       
@@ -896,16 +905,17 @@
             p2.innerHTML = 'J’espère que tu as aimé! J\'ai passé beaucoup trop de temps à faire un dé en 3D, un livre avec des pages qui tournent, des animations et audio... Je t\'aime et bien hâte d\'aller manger avec toi!! :). Aussi, tu peux maintenant choisir le jet du dé pour voir les autres fins';
             document.getElementById("page10Text").append(p2);
             document.getElementById("resetButton10").hidden = false;
-
+            wongame = true;
         }
 
         $('.randomize, .die').click(function () {
 
-            if (isRolling) {
+            if (isRolling || isStillShowingDice) {
                 return;
             }
 
             isRolling = true;
+            isStillShowingDice = true;
             $die.addClass('rolling');
             clearTimeout(timeoutId);
             playDiceSound();
@@ -1051,6 +1061,7 @@
 
                         completedPages.push(8);
                         failedThirdTry = false;
+
                         texteFin();
                     }
                     else {
@@ -1104,8 +1115,14 @@
                             clearTimeout(diceTimeoutId);
                             diceTimeoutId = null;
                         }
+
+                        if (wongame && page >= 10 && playedEndingAudio == false) {
+                            playedEndingAudio = true;
+                            winAudio.play();
+                        }
+
                         if (isRolling) {
-                            event.preventDefault(); // Prevents the page from turning
+                            event.preventDefault();
                         }
                         else {
                             hideDice(true);
