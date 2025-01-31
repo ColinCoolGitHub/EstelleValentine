@@ -700,12 +700,8 @@
 
                 var storage = localStorage.getItem("finishedGame");
 
-                if (storage !== null) {
-                    if (storage === "true") { 
-                        $("#showRadio").css('visibility', 'visible');
-                    }
-                }
 
+                ShowRadio();
 
 
                 setTimeout(() => {
@@ -844,12 +840,25 @@
             $die.attr('data-face', face);
         }
 
+        function ShowRadio(){
+            var storage = localStorage.getItem("finishedGame");
+
+            if (storage !== null) {
+                if (storage === "true") {
+                    $("#showRadio").css('visibility', 'visible');
+                }
+            }
+        }
+
         function hideDice(now) {
 
             if (now) {
                 document.getElementById("dicecontent").classList.remove("show")
                 document.getElementById("st").classList.remove("show")
+
+
                 $("#showRadio").css('visibility', 'hidden');
+
                 $("#dicecontent").css('visibility', 'hidden');
                 $("#st").css('visibility', 'hidden');
                 isStillShowingDice = false;
@@ -871,7 +880,7 @@
             document.getElementById("stText").innerHTML = number + " et plus pour réussir"
             $("#dicecontent").css('visibility', 'visible');
             $("#st").css('visibility', 'visible');
-            $("#showRadio").css('visibility', 'visible');
+            ShowRadio();
             document.getElementById("dicecontent").classList.add("show")
             document.getElementById("st").classList.add("show")
 
