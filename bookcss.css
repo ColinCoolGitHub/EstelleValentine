@@ -61,7 +61,7 @@ body {
 .content-inner {
       text-align: center;
     display: table-cell;
-    vertical-align: middle;
+    vertical-align: top;
 }
 
 
