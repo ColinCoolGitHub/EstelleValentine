@@ -438,7 +438,7 @@
     <div class="cinematic" id="cinematic">
         <p>Il était une fois, un jeune homme nommé Colin...</p>
         <p>Pour cette Saint-Valentin, il veut demander à Estelle d'être sa Valentine... mais il a besoin de ton aide !</p>
-        <button class="start-btn" id="startBtn" style="visibility:hidden" onclick="startGame()">Prête à aider Colin ?</button>
+        <button class="start-btn" id="startBtn" style="visibility:hidden" onclick="startGame()">Prêt à aider Colin ?</button>
     </div>
     <div id="showPage" style="visibility: hidden">
 
@@ -471,6 +471,18 @@
 
         <div id="st" class="st">
             <p id="stText">1</p>
+            <div id="showRadio" style="visibility:hidden">
+                <label>
+                    <input type="radio" name="diceMode" value="1">Forcer réussite
+                </label>
+                <label>
+                    <input type="radio" name="diceMode" value="2" checked>Aléatoire
+                </label>
+                <label>
+                    <input type="radio" name="diceMode" value="3">Échec
+                </label>
+            </div>
+
         </div>
 
         <button id="bgAudioToggle" onclick="toggleBgAudio()">Musique : NON</button>
@@ -586,7 +598,7 @@
                         <div id="page8" class="page-num-8">
                             <div class="pages-content">
                                 <div class="content-inner">
-                                    <h1 id="page8Resultat">'</h1>
+                                    <h1 id="page8Resultat"></h1>
 
                                     <div id="page8Text" class="text">
                                     </div>
@@ -598,13 +610,39 @@
 
                                         <div>
                                             <button onclick="playAudio()">▶ Play</button>
-                                            <button onclick="pauseAudio()">⏸ Pause</button>
                                         </div>
 
                                         <div id="progressContainer" onclick="seekAudio(event)">
                                             <div id="progressBar"></div>
                                         </div>
                                     </div>
+                                    <div id="page8Text2" class="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="page9" class="page-num-9">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page9Resultat"></h1>
+
+                                    <div id="page9Text" class="text">
+                                    </div>
+                                    <input id="resetButton9" hidden type="button" onclick="location.reload()" name="name" value="Recommencer" />
+
+                                </div>
+                            </div>
+                        </div>    <div id="page10" class="page-num-10">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page10Resultat"></h1>
+
+                                    <div id="page10Text" class="text">
+                                    </div>
+
+                                    <input id="resetButton10" hidden type="button" onclick="location.reload()" name="name" value="Rejouer" />
+
                                 </div>
                             </div>
                         </div>
@@ -653,6 +691,17 @@
                 document.getElementById("showPage").classList.add("now");
                 $("#showPage").css('visibility', 'visible');
 
+
+                var storage = localStorage.getItem("finishedGame");
+
+                if (storage !== null) {
+                    if (storage === "true") { 
+                        $("#showRadio").css('visibility', 'visible');
+                    }
+                }
+
+
+
                 setTimeout(() => {
                     const arrow = document.getElementById("pageturnArrow");
                     if (arrow) {
@@ -675,9 +724,12 @@
         currentPage = 1;
         failedFirstTry = false;
         failedSecondTry = true;
+        failedThirdTry = true;
         let isBgAudioStarted = false;
         let astarionAudio = false;
 
+        var diceTimeoutId = null;
+        var isTurningDice = false;
         var dicecontent = document.getElementById("dicecontent");
 
         var completedPages = [];
@@ -691,11 +743,23 @@
         var musicOff = false;
 
         function playAudio() {
+
             astarionAudio = true;
-            bgAudio.pause();
-            bgAudioToggle.classList.remove("active");
-            bgAudioToggle.textContent = "Musique : NON";
-            audio.play();
+            bgAudio.volume = 0.02;
+
+            audio.play().then(() => {
+                audio.onended = () => {
+                    bgAudio.volume = 0.1;
+                };
+            }).catch(error => {
+                console.error("Error playing audio:", error);
+            });
+
+            //astarionAudio = true;
+            //bgAudio.pause();
+            //bgAudioToggle.classList.remove("active");
+            //bgAudioToggle.textContent = "Musique : NON";
+            //audio.play();
         }
 
         function pauseAudio() {
@@ -776,17 +840,17 @@
             if (now) {
                 document.getElementById("dicecontent").classList.remove("show")
                 document.getElementById("st").classList.remove("show")
+                $("#showRadio").css('visibility', 'hidden');
                 $("#dicecontent").css('visibility', 'hidden');
                 $("#st").css('visibility', 'hidden');
-                isRolling = false;
             }
             else {
                 document.getElementById("dicecontent").classList.remove("show")
                 document.getElementById("st").classList.remove("show")
                 setTimeout(() => {
+                    $("#showRadio").css('visibility', 'hidden');
                     $("#dicecontent").css('visibility', 'hidden');
                     $("#st").css('visibility', 'hidden');
-                    isRolling = false;
                 }, 1500);
             }
       
@@ -796,6 +860,7 @@
             document.getElementById("stText").innerHTML = number + " et plus pour réussir"
             $("#dicecontent").css('visibility', 'visible');
             $("#st").css('visibility', 'visible');
+            $("#showRadio").css('visibility', 'visible');
             document.getElementById("dicecontent").classList.add("show")
             document.getElementById("st").classList.add("show")
 
@@ -822,11 +887,13 @@
             //Maintenant arrivés au Fort Chambly, les deux profitèrent de l’air frais et du paysage paisible.Après une petite balade le long des sentiers, ils décidèrent de s’installer dans l’herbe, à l’abri d’un grand arbre.
             //La conversation allait bon train, entre rires sincères et anecdotes légères.À un certain moment, Estelle, avec un sourire malicieux et un petit rire un peu étrange, tendit doucement sa main vers celle de Colin, l'agrippa et la tendit vers elle.
 
-            document.getElementById("page8Resultat").innerHTML = "Love you!! ❤️";
+            localStorage.setItem("finishedGame", "true");
+            document.getElementById("page10Resultat").innerHTML = "Love you!! ❤️";
 
             p2 = document.createElement("p");
-            p2.innerHTML = 'J’espère que tu as aimé! J\'ai passé beaucoup trop de temps à faire un dé en 3D, un livre avec des pages qui tournent, des animations et audio... Je t\'aime et bien hâte d\'aller manger avec toi!! :). Aussi... Astarion avait un message pour toi.';
-            document.getElementById("page8Text").append(p2);
+            p2.innerHTML = 'J’espère que tu as aimé! J\'ai passé beaucoup trop de temps à faire un dé en 3D, un livre avec des pages qui tournent, des animations et audio... Je t\'aime et bien hâte d\'aller manger avec toi!! :). Aussi, tu peux maintenant choisir le jet du dé pour voir les autres fins';
+            document.getElementById("page10Text").append(p2);
+            document.getElementById("resetButton10").hidden = false;
 
         }
 
@@ -842,7 +909,21 @@
             playDiceSound();
             timeoutId = setTimeout(function () {
                 $die.removeClass('rolling');
-                rollTo(randomFace());
+                var selectedMode = document.querySelector('input[name="diceMode"]:checked').value;
+                if (selectedMode == 1) {
+                    lastFace = 20;
+                    rollTo(20);
+                }
+                else if (selectedMode == 2) {
+                    rollTo(randomFace());
+                } 
+                else if (selectedMode == 3) {
+                    lastFace = 1;
+                    rollTo(1);
+                }
+
+
+
                 if (currentPage == 2 && completedPages.includes(2) == false) {
 
                     if (lastFace >= 10) {
@@ -857,7 +938,7 @@
                         document.getElementById("page4Resultat").innerHTML = "Le chemin";
 
                         p2 = document.createElement("p");
-                        p2.innerHTML = 'Rassuré, Colin proposa aussitôt :\"Que dirais-tu d\’une promenade au Fort Chambly pour fêter ça ?\" \"Excellente idée ! J\’adore cet endroit,\" répondit-elle en riant. Colin et Estelle se déplacent vers le fort Chambly';
+                        p2.innerHTML = 'Rassuré, Colin proposa aussitôt :\"Que dirais-tu d\’une promenade au Fort Chambly pour fêter ça ?\" \"Excellente idée ! J\’adore cet endroit,\" répondit-elle en riant. Colin et Estelle se déplacent vers le Fort Chambly';
                         document.getElementById("page4Text").append(p2);
 
 
@@ -887,7 +968,7 @@
                     if (lastFace >= 12) {
                         document.getElementById("page5Resultat").innerHTML = "Réussi";
                         p = document.createElement("p");
-                        p.innerHTML = 'Les amis d\'Estelle échangèrent des regards surpris, mais Estelle éclata de rire. \"Tu es vraiment quelque chose, Colin,\" répondit - elle avec un sourire chaleureux. \"D\'accord, tu as gagné ta chance pour aujourd\'hui. Allons-y !\" Estelle et Colin décide donc d\'aller au ford chambly';
+                        p.innerHTML = 'Les amis d\'Estelle échangèrent des regards surpris, mais Estelle éclata de rire. \"Tu es vraiment quelque chose, Colin,\" répondit - elle avec un sourire chaleureux. \"D\'accord, tu as gagné ta chance pour aujourd\'hui. Allons-y !\" Estelle et Colin décide donc d\'aller au Ford Chambly';
                         document.getElementById("page5Text").append(p);
                         completedPages.push(4);
                         fortChamblyDocument();
@@ -928,16 +1009,25 @@
 
                 }
                 else if (currentPage == 6 && completedPages.includes(6) == false) {
-                    if (lastFace >= 2) {
+                    if (lastFace >= 4) {
                         failedSecondTry = false;
                         document.getElementById("page7Resultat").innerHTML = "Réussi";
                         p = document.createElement("p");
-                        p.innerHTML = 'Colin, le cœur battant, s’approcha doucement. Estelle ne recula pas, et leurs lèvres se rencontrèrent dans un baiser tendre et sincère. Elle sourit ensuite, glissant sa main dans la sienne, avant de poser sa tête sur son épaule. Le moment était parfait, simple et inoubliable. Félicitations! Tu peux maintenant aller à la page suivante :)';
+                        p.innerHTML = 'Colin, le cœur battant, s’approcha doucement. Estelle ne recula pas, et leurs lèvres se rencontrèrent dans un baiser tendre et sincère. Elle sourit ensuite, glissant sa main dans la sienne, avant de poser sa tête sur son épaule. Le moment était parfait, simple et inoubliable.';
                         document.getElementById("page7Text").append(p);
                         completedPages.push(6);
-                        texteFin();
                         $("#secretAudio").css('visibility', 'visible');
 
+
+                        document.getElementById("page8Resultat").innerHTML = "L'inconnu";
+
+                        p2 = document.createElement("p");
+                        p2.innerHTML = 'Alors qu\'ils se promenaient tranquillement après le moment inoubliable, un jeune homme élégant et charismatique, apparut devant eux. D\'une voix suave, il s\'inclina devant Estelle et dit en anglais: ';
+                        document.getElementById("page8Text").append(p2);
+
+                        p3 = document.createElement("p");
+                        p3.innerHTML = '"Im better than Colin. More charming and way better looking, you should go out with me Estelle"';
+                        document.getElementById("page8Text2").append(p3);
                     }
                     else {
                         document.getElementById("page7Resultat").innerHTML = "Échec...";
@@ -949,11 +1039,40 @@
                         failedSecondTry = true;
                     }
                 }
+                else if (currentPage == 8 && completedPages.includes(8) == false) {
+                    if (lastFace >= 2) {
+                        document.getElementById("page9Resultat").innerHTML = "Réussi";
 
-                setTimeout(function () {
+                        p = document.createElement("p");
+                        p.innerHTML = 'Colin, sentant le danger, glissa instinctivement son bras autour d\'Estelle. Elle rit doucement, jetant un regard tendre à Colin. "Merci, Astarion, mais j\'ai déjà trouvé mon valentin." Astarion esquissa un sourire en coin et s’inclina avant de disparaître dans la foule.';
+                        document.getElementById("page9Text").append(p);
+
+                        completedPages.push(8);
+                        failedThirdTry = false;
+                        texteFin();
+                    }
+                    else {
+                        failedThirdTry = true;
+                        document.getElementById("page9Resultat").innerHTML = "Échec...";
+
+                        p = document.createElement("p");
+                        p.innerHTML = 'Colin, sentant le danger, glissa instinctivement son bras autour d\'Estelle. Astarion, avec un sourire charmeur et une voix envoûtante, complimenta Estelle avec une élégance déconcertante. "Pourquoi perdre votre temps avec un mortel ordinaire quand vous pourriez avoir quelqu’un d’exceptionnel ?" Estelle rougit légèrement. Elle finit par céder aux charmes d’Astarion...';
+                        document.getElementById("page9Text").append(p);
+
+                        document.getElementById("resetButton9").hidden = false; // Allow retry
+                        completedPages.push(8);
+                    }
+                }
+
+
+                isRolling = false;
+
+                diceTimeoutId = setTimeout(() => {
+
                     hideDice();
 
-                }, 500)
+                }, 1500);
+
 
             }, animationDuration);
 
@@ -978,12 +1097,16 @@
                 elevation: 300,
                 when: {
                     turning: function (event, page) {
-                        console.log("Attempting to turn to page:", page);
 
-                        hideDice(true);
+                        if (diceTimeoutId != null) {
+                            clearTimeout(diceTimeoutId);
+                            diceTimeoutId = null;
+                        }
                         if (isRolling) {
-                            console.log("Page turning blocked!");
                             event.preventDefault(); // Prevents the page from turning
+                        }
+                        else {
+                            hideDice(true);
                         }
                     },
                     turned: function (e, page) {
@@ -997,6 +1120,9 @@
                         else if (page == 7) {
                             currentPage = 6
                         }
+                        else if (page == 9) {
+                            currentPage = 8
+                        }
                         if (currentPage == 2 && completedPages.includes(2) == false) {
                             showDice(10);
                         }
@@ -1007,14 +1133,20 @@
                             showDice(8);
                         }
                         else if (currentPage == 6 && completedPages.includes(4) && completedPages.includes(2) && completedPages.includes(6) == false) {
+                            showDice(4);
+                        }
+                        else if (currentPage == 8 && completedPages.includes(6) && failedSecondTry == false && completedPages.includes(8) == false) {
                             showDice(2);
                         }
-                        else if (currentPage == 8 && completedPages.includes(6) && failedSecondTry == false) {
+                        else if (currentPage == 10 && completedPages.includes(8) && failedThirdTry == false) {
                             setInterval(createHeart, 200);
                         }
                         else {
                             hideDice();
                         }
+
+                        isTurningDice = false;
+
                     }
                 }
             });
