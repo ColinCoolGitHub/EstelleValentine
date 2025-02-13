@@ -752,6 +752,7 @@
         var dicecontent = document.getElementById("dicecontent");
         var isStillShowingDice = false;
         var completedPages = [];
+        var showedHearts = false;
 
         const winAudio = document.getElementById("win");
 
@@ -1197,7 +1198,11 @@
                             showDice(2);
                         }
                         else if (currentPage == 10 && completedPages.includes(8) && failedThirdTry == false) {
-                            setInterval(createHeart, 200);
+
+                            if (showedHearts == false) {
+                                setInterval(createHeart, 200);
+                                showedHearts = true;
+                            }
                         }
                         else {
                             hideDice();
