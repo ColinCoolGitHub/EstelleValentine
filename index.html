@@ -434,6 +434,15 @@
             .st.show {
                 opacity: 1;
             }
+
+        #page11 img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
     </style>
 </head>
 <body id="body" class="introEffect">
@@ -652,6 +661,14 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="page11" class="page-num-11">
+
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <img id="finalImage" style="visibility: hidden;" src="https://cdn.discordapp.com/attachments/1014742293590327387/1339397073950347284/image.jpg?ex=67ae923b&is=67ad40bb&hm=12b7cee3d6618892dcbe42fb43760de43f750e0b8286831afb76bd77c547e0ae&" alt="Description of the image">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -840,7 +857,7 @@
             $die.attr('data-face', face);
         }
 
-        function ShowRadio(){
+        function ShowRadio() {
             var storage = localStorage.getItem("finishedGame");
 
             if (storage !== null) {
@@ -873,7 +890,7 @@
                     isStillShowingDice = false;
                 }, 1500);
             }
-      
+
         }
 
         function showDice(number) {
@@ -915,6 +932,7 @@
             p2.innerHTML = 'Tu es une personne incroyable! J’espère que tu as aimé! J\'ai passé beaucoup trop de temps à faire un dé en 3D, un livre avec des pages qui tournent, des animations et audio... Je t\'aime et bien hâte d\'aller manger avec toi!! :). Aussi, tu peux maintenant choisir le jet du dé pour voir les autres fins en rejouant';
             document.getElementById("page10Text").append(p2);
             document.getElementById("resetButton10").hidden = false;
+            $("#finalImage").css('visibility', 'visible');
             wongame = true;
         }
 
@@ -938,7 +956,7 @@
                 }
                 else if (selectedMode == 2) {
                     rollTo(randomFace());
-                } 
+                }
                 else if (selectedMode == 3) {
                     lastFace = 1;
                     rollTo(1);
@@ -1247,15 +1265,15 @@
             // Add the falling animation via JavaScript
             const style = document.createElement("style");
             style.innerHTML = `
-                                    @keyframes fall {
-                                        0% {
-                                            transform: translateY(0);
-                                        }
-                                        100% {
-                                            transform: translateY(95vh); /* Move down through the viewport */
-                                        }
-                                    }
-                                `;
+                                            @keyframes fall {
+                                                0% {
+                                                    transform: translateY(0);
+                                                }
+                                                100% {
+                                                    transform: translateY(95vh); /* Move down through the viewport */
+                                                }
+                                            }
+                                        `;
             document.head.appendChild(style);
         });
 
