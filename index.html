@@ -774,7 +774,6 @@
                     bgAudio.volume = 0.1;
                 };
             }).catch(error => {
-                console.error("Error playing audio:", error);
             });
 
             //astarionAudio = true;
@@ -966,7 +965,7 @@
 
                 if (currentPage == 2 && completedPages.includes(2) == false) {
 
-                    if (lastFace >= 10) {
+                    if (lastFace >= 6) {
                         document.getElementById("page3Resultat").innerHTML = "Réussi";
 
                         p = document.createElement("p");
@@ -1005,7 +1004,7 @@
                 }
                 else if (currentPage == 4 && failedFirstTry && completedPages.includes(4) == false) {
 
-                    if (lastFace >= 12) {
+                    if (lastFace >= 9) {
                         document.getElementById("page5Resultat").innerHTML = "Réussi";
                         p = document.createElement("p");
                         p.innerHTML = 'Les amis d\'Estelle échangèrent des regards surpris, mais Estelle éclata de rire. \"Tu es vraiment quelque chose, Colin,\" répondit - elle avec un sourire chaleureux. \"D\'accord, tu as gagné ta chance pour aujourd\'hui. Allons-y !\" Estelle et Colin décide donc d\'aller au Ford Chambly';
@@ -1171,10 +1170,22 @@
                             currentPage = 8
                         }
                         if (currentPage == 2 && completedPages.includes(2) == false) {
-                            showDice(10);
+
+                            var tutoDone = localStorage.getItem("tutorialDone");
+                            if (tutoDone === "true") {
+                                showDice(6);
+                            }
+                            else {
+                                setTimeout(() => {
+                                    showDice(6);
+                                    localStorage.setItem("tutorialDone", "true");
+                                }, 4500);
+                            }
+                           
+                        
                         }
                         else if (currentPage == 4 && completedPages.includes(4) == false && completedPages.includes(2) && failedFirstTry) {
-                            showDice(12);
+                            showDice(9);
                         }
                         else if (currentPage == 4 && completedPages.includes(4) == false && completedPages.includes(2) && failedFirstTry == false) {
                             showDice(8);
