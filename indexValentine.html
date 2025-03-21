@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html id="html" lang="en" class="">
+<head>
+    <link rel="icon" href="favicon.webp" type="image/png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>20-Sided Die Animation</title>
+    <link rel="stylesheet" href="bookcss.css">
+    <style>
+        @keyframes roll {
+            10% {
+                transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            }
+
+            30% {
+                transform: rotateX(120deg) rotateY(240deg) rotateZ(0deg) translateX(40px) translateY(40px);
+            }
+
+            50% {
+                transform: rotateX(240deg) rotateY(480deg) rotateZ(0deg) translateX(-40px) translateY(-40px);
+            }
+
+            70% {
+                transform: rotateX(360deg) rotateY(720deg) rotateZ(0deg);
+            }
+
+            90% {
+                transform: rotateX(480deg) rotateY(960deg) rotateZ(0deg);
+            }
+        }
+
+
+
+        body {
+            background: radial-gradient(circle, #ff9595, #ff668f); /* Valentine's gradient background */
+            padding: 20px;
+        }
+
+        .st {
+            text-align: center;
+            justify-content: center
+            /*     width: 200px;
+            height: 200px;*/
+            /*perspective: 1500px;*/
+        }
+
+        .die {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.5s ease-out;
+            cursor: pointer;
+            transform: rotateX(-53deg);
+        }
+
+            .die.rolling {
+                animation: roll 3s linear;
+            }
+
+            .die[data-face="1"] {
+                transform: rotateX(-53deg) rotateY(0deg);
+            }
+
+            .die[data-face="2"] {
+                transform: rotateX(-53deg) rotateY(72deg);
+            }
+
+            .die[data-face="3"] {
+                transform: rotateX(-53deg) rotateY(144deg);
+            }
+
+            .die[data-face="4"] {
+                transform: rotateX(-53deg) rotateY(216deg);
+            }
+
+            .die[data-face="5"] {
+                transform: rotateX(-53deg) rotateY(288deg);
+            }
+
+            .die[data-face="16"] {
+                transform: rotateX(127deg) rotateY(-72deg);
+            }
+
+            .die[data-face="17"] {
+                transform: rotateX(127deg) rotateY(-144deg);
+            }
+
+            .die[data-face="18"] {
+                transform: rotateX(127deg) rotateY(-216deg);
+            }
+
+            .die[data-face="19"] {
+                transform: rotateX(127deg) rotateY(-288deg);
+            }
+
+            .die[data-face="20"] {
+                transform: rotateX(127deg) rotateY(-360deg);
+            }
+
+            .die[data-face="6"] {
+                transform: rotateX(11deg) rotateZ(180deg) rotateY(0deg);
+            }
+
+            .die[data-face="7"] {
+                transform: rotateX(11deg) rotateZ(180deg) rotateY(72deg);
+            }
+
+            .die[data-face="8"] {
+                transform: rotateX(11deg) rotateZ(180deg) rotateY(144deg);
+            }
+
+            .die[data-face="9"] {
+                transform: rotateX(11deg) rotateZ(180deg) rotateY(216deg);
+            }
+
+            .die[data-face="10"] {
+                transform: rotateX(11deg) rotateZ(180deg) rotateY(288deg);
+            }
+
+            .die[data-face="11"] {
+                transform: rotateX(11deg) rotateY(-252deg);
+            }
+
+            .die[data-face="12"] {
+                transform: rotateX(11deg) rotateY(-324deg);
+            }
+
+            .die[data-face="13"] {
+                transform: rotateX(11deg) rotateY(-396deg);
+            }
+
+            .die[data-face="14"] {
+                transform: rotateX(11deg) rotateY(-468deg);
+            }
+
+            .die[data-face="15"] {
+                transform: rotateX(11deg) rotateY(-540deg);
+            }
+
+            .die .face {
+                position: absolute;
+                left: 50%;
+                top: 0;
+                margin: 0 -50px;
+                border-left: 50px solid transparent;
+                border-right: 50px solid transparent;
+                border-bottom: 86px solid #ff1654;
+                width: 0px;
+                height: 0px;
+                transform-style: preserve-3d;
+                backface-visibility: hidden;
+                counter-increment: steps 1;
+            }
+
+                .die .face:before {
+                    content: counter(steps);
+                    position: absolute;
+                    top: 21.5px;
+                    left: -100px;
+                    color: #fff;
+                    text-shadow: 1px 1px 3px #000;
+                    font-size: 43px;
+                    text-align: center;
+                    line-height: 77.4px;
+                    width: 200px;
+                    height: 86px;
+                }
+
+                .die .face:nth-child(1) {
+                    transform: rotateY(0deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
+                }
+
+                .die .face:nth-child(2) {
+                    transform: rotateY(-72deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
+                }
+
+                .die .face:nth-child(3) {
+                    transform: rotateY(-144deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
+                }
+
+                .die .face:nth-child(4) {
+                    transform: rotateY(-216deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
+                }
+
+                .die .face:nth-child(5) {
+                    transform: rotateY(-288deg) translateZ(33.5px) translateY(-12.9px) rotateX(53deg);
+                }
+
+                .die .face:nth-child(16) {
+                    transform: rotateY(-108deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
+                }
+
+                .die .face:nth-child(17) {
+                    transform: rotateY(-36deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
+                }
+
+                .die .face:nth-child(18) {
+                    transform: rotateY(36deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
+                }
+
+                .die .face:nth-child(19) {
+                    transform: rotateY(108deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
+                }
+
+                .die .face:nth-child(20) {
+                    transform: rotateY(180deg) translateZ(33.5px) translateY(121.26px) rotateZ(180deg) rotateX(53deg);
+                }
+
+                .die .face:nth-child(6) {
+                    transform: rotateY(360deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
+                }
+
+                .die .face:nth-child(7) {
+                    transform: rotateY(288deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
+                }
+
+                .die .face:nth-child(8) {
+                    transform: rotateY(216deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
+                }
+
+                .die .face:nth-child(9) {
+                    transform: rotateY(144deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
+                }
+
+                .die .face:nth-child(10) {
+                    transform: rotateY(72deg) translateZ(75px) translateY(54.18px) rotateZ(180deg) rotateX(-11deg);
+                }
+
+                .die .face:nth-child(11) {
+                    transform: rotateY(252deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
+                }
+
+                .die .face:nth-child(12) {
+                    transform: rotateY(324deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
+                }
+
+                .die .face:nth-child(13) {
+                    transform: rotateY(396deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
+                }
+
+                .die .face:nth-child(14) {
+                    transform: rotateY(468deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
+                }
+
+                .die .face:nth-child(15) {
+                    transform: rotateY(540deg) translateZ(75px) translateY(54.18px) rotateX(-11deg);
+                }
+
+        h2 {
+            color: #fafafa;
+        }
+
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            ul > li {
+                display: inline-block;
+                margin: 10px 10px;
+            }
+
+        a {
+            text-align: center;
+            color: #fff;
+            text-decoration: none;
+            font-size: 25px;
+            font-weight: bold;
+            padding: 5px 15px;
+            width: 40px;
+            display: inline-block;
+            border: 1px solid #dcdcdc;
+            border-radius: 4px;
+            background-color: #999;
+        }
+
+            a.active {
+                background-color: #333;
+            }
+
+            a:hover {
+                background-color: #666;
+            }
+
+            a.randomize {
+                width: auto;
+                margin: 20px 10px;
+            }
+
+        #progressContainer {
+            width: 100%;
+            max-width: 400px;
+            height: 10px;
+            background: #ddd;
+            border-radius: 5px;
+            margin: 10px auto;
+            cursor: pointer;
+            position: relative;
+        }
+
+        #progressBar {
+            width: 0%;
+            height: 100%;
+            background: #007BFF;
+            border-radius: 5px;
+        }
+
+        #bgAudioToggle {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 15px;
+            font-size: 12px;
+            cursor: pointer;
+            border: none;
+            background: red;
+            color: white;
+            border-radius: 5px;
+        }
+
+            #bgAudioToggle.active {
+                background: green;
+            }
+
+
+        .cinematic {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 24px;
+            text-align: center;
+            opacity: 1;
+            z-index: 999;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .start-btn {
+            padding: 15px 30px;
+            font-size: 20px;
+            background: radial-gradient(circle, #ff9595, #ff668f);
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            border-radius: 10px;
+            z-index: 999;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .cinematic.hide {
+            opacity: 0;
+        }
+
+        .start-btn.show {
+            opacity: 1;
+        }
+
+        .introEffect {
+            margin: 0;
+            padding: 20px;
+            width: 100%;
+            height: 100%;
+            background: black;
+            overflow: hidden;
+            transition: background 2s ease-in-out !important;
+            opacity: 1;
+            z-index: 999;
+        }
+
+            .introEffect.hide {
+                background: #ff7a8f;
+            }
+
+        #showPage {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+            #showPage.now {
+                opacity: 1;
+            }
+
+        .page-turn-arrow {
+            position: absolute;
+            top: 10px; /* Adjust based on your design */
+            right: 50px; /* Adjust based on your design */
+            font-size: 50px;
+            color: #333;
+            opacity: 0;
+            z-index: 10; /* Ensure the arrow is above other elements */
+            transition: opacity 1s ease-in-out;
+        }
+
+            .page-turn-arrow.visible {
+                opacity: 1; /* Visible when this class is added */
+            }
+
+
+
+
+        .content {
+            margin: auto auto;
+            position: relative;
+            width: 200px;
+            height: 200px;
+            perspective: 1500px;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+            .content:hover {
+                transform: scale(1.1);
+            }
+
+            .content.show {
+                opacity: 1;
+            }
+
+
+        .st {
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+
+            .st.show {
+                opacity: 1;
+            }
+
+        #page11 img {
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            display: block;
+            margin: auto;
+        }
+    </style>
+</head>
+<body id="body" class="introEffect">
+    <div class="cinematic" id="cinematic">
+        <p>Il était une fois, un jeune homme nommé Colin...</p>
+        <p>Pour cette Saint-Valentin, il veut demander à Estelle d'être sa Valentine... mais il a besoin de ton aide !</p>
+        <button class="start-btn" id="startBtn" style="visibility:hidden" onclick="startGame()">Prêt à aider Colin ?</button>
+    </div>
+    <div id="showPage" style="visibility: hidden">
+
+
+
+        <div id="dicecontent" class="content">
+            <div class="die">
+                <figure class="face face-1"></figure>
+                <figure class="face face-2"></figure>
+                <figure class="face face-3"></figure>
+                <figure class="face face-4"></figure>
+                <figure class="face face-5"></figure>
+                <figure class="face face-6"></figure>
+                <figure class="face face-7"></figure>
+                <figure class="face face-8"></figure>
+                <figure class="face face-9"></figure>
+                <figure class="face face-10"></figure>
+                <figure class="face face-11"></figure>
+                <figure class="face face-12"></figure>
+                <figure class="face face-13"></figure>
+                <figure class="face face-14"></figure>
+                <figure class="face face-15"></figure>
+                <figure class="face face-16"></figure>
+                <figure class="face face-17"></figure>
+                <figure class="face face-18"></figure>
+                <figure class="face face-19"></figure>
+                <figure class="face face-20"></figure>
+            </div>
+        </div>
+
+        <div id="st" class="st">
+            <p id="stText">1</p>
+            <div id="showRadio" style="visibility:hidden">
+                <label>
+                    <input type="radio" name="diceMode" value="1">Forcer réussite
+                </label>
+                <label>
+                    <input type="radio" name="diceMode" value="2" checked>Aléatoire
+                </label>
+                <label>
+                    <input type="radio" name="diceMode" value="3">Échec
+                </label>
+            </div>
+
+        </div>
+
+        <button id="bgAudioToggle" onclick="toggleBgAudio()">Musique : NON</button>
+        <!-- Background Looping Audio -->
+        <audio id="bgAudio" loop>
+            <source src="bg3ost.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="bg3s">
+            <source src="dice.mp3" type="audio/mpeg">
+        </audio>
+
+        <audio id="win">
+            <source src="win.mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="container">
+            <div class="book-wrapper">
+                <div class="book-cover">
+                    <img src="bookcover2.png" alt="Couverture du livre">
+                </div>
+                <div class="pages-container">
+                    <div class="pages">
+                        <!-- Page 1 -->
+                        <div id="page1" class="page-num-1">
+                            <div class="pages-content">
+                                <div class="pages-background"></div>
+                                <div class="content-inner">
+                                    <h1>Introduction</h1>
+
+                                    <div class="text">
+
+                                        <p>
+                                            Colin, un garçon timide mais plein de rêves, voulait demander à Estelle, la fille la plus belle du monde, d'être sa Valentine. Il avait tout préparé : une lettre, un bouquet de fleurs et son courage, fragile mais sincère.
+                                            Le jour de la Saint-Valentin était arrivé, et Colin savait qu'il devait tenter sa chance. Mais comment s'y prendre ? C'était le moment où le destin, ou peut-être un jet de dés, déciderait de son avenir.
+                                        </p>
+                                    </div>
+
+
+
+                                </div>
+                                <div id="pageturnArrow" class="page-turn-arrow">
+                                    &#8594; <!-- Right arrow symbol -->
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page 2 -->
+                        <div id="page2" class="page-num-2">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1>La demande</h1>
+
+                                    <div class="text">
+                                        <p>Colin se dirigea vers Estelle, qui était assise sous l'arbre d'un parc, entourée de ses amies. Son cœur battait à tout rompre. Faire un jet de dé pour savoir la suite!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page 3 -->
+                        <div id="page3S" class="page-num-3">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page3Resultat"></h1>
+                                    <div id="page3Text" class="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page 4 -->
+                        <div id="page4" class="page-num-4">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page4Resultat"></h1>
+                                    <div id="page4Text" class="text">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page 5 -->
+                        <div id="page5" class="page-num-5">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page5Resultat"></h1>
+                                    <div id="page5Text" class="text">
+                                    </div>
+                                    <input id="resetButton" hidden type="button" onclick="location.reload()" name="name" value="Recommencer" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 6 -->
+                        <div id="page6" class="page-num-6">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page6Resultat"></h1>
+                                    <div id="page6Text" class="text">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Page 7 -->
+                        <div id="page7" class="page-num-7">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page7Resultat"></h1>
+                                    <div id="page7Text" class="text">
+                                    </div>
+                                    <input id="resetButton7" hidden type="button" onclick="location.reload()" name="name" value="Recommencer" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Page 8 -->
+
+                        <div id="page8" class="page-num-8">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page8Resultat"></h1>
+
+                                    <div id="page8Text" class="text">
+                                    </div>
+                                    <div id="secretAudio" style="visibility: hidden;">
+                                        <audio id="audioPlayer">
+                                            <source src="astarion-tts-file.wav" type="audio/mpeg">
+                                            Your browser does not support the audio element.
+                                        </audio>
+
+                                        <div>
+                                            <button onclick="playAudio()">▶ Jouer</button>
+                                        </div>
+
+                                        <div id="progressContainer" onclick="seekAudio(event)">
+                                            <div id="progressBar"></div>
+                                        </div>
+                                    </div>
+                                    <div id="page8Text2" class="text">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div id="page9" class="page-num-9">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page9Resultat"></h1>
+
+                                    <div id="page9Text" class="text">
+                                    </div>
+                                    <input id="resetButton9" hidden type="button" onclick="location.reload()" name="name" value="Recommencer" />
+
+                                </div>
+                            </div>
+                        </div>    <div id="page10" class="page-num-10">
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <h1 id="page10Resultat"></h1>
+
+                                    <div id="page10Text" class="text">
+                                    </div>
+
+                                    <input id="resetButton10" hidden type="button" onclick="location.reload()" name="name" value="Rejouer" />
+
+                                </div>
+                            </div>
+                        </div>
+                        <div id="page11" class="page-num-11">
+
+                            <div class="pages-content">
+                                <div class="content-inner">
+                                    <img id="finalImage" style="visibility: hidden;" src="finalImage.jpg" alt="Description of the image">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+    <!--astarion-tts-file.wav-->
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="bookjs.js"></script>
+    <script>
+        setTimeout(() => {
+            //document.getElementById("startBtn").style.display = "block";
+            $("#startBtn").css('visibility', 'visible');
+            document.getElementById("startBtn").classList.add("show");
+
+        }, 1500);
+
+        function startGame() {
+            document.getElementById("cinematic").classList.add("hide")
+            document.getElementById("startBtn").classList.remove("show");
+            document.getElementById("startBtn").classList.remove("show");
+
+            //document.getElementById("html").classList.add("hide")
+            document.getElementById("body").classList.add("hide")
+            setTimeout(() => {
+
+                //$("#html").removeClass();
+                $("#body").removeClass();
+                $("#cinematic").css('visibility', 'hidden');
+                document.getElementById("cinematic").hidden = true;
+
+                $("#startBtn").css('visibility', 'hidden');
+                $("#startBtn").removeClass();
+                $("#cinematic").removeClass();
+
+
+
+                document.getElementById("showPage").classList.add("now");
+                $("#showPage").css('visibility', 'visible');
+
+
+                var storage = localStorage.getItem("finishedGame");
+
+
+                ShowRadio();
+
+
+                setTimeout(() => {
+                    const arrow = document.getElementById("pageturnArrow");
+                    if (arrow) {
+                        arrow.classList.add("visible");
+                    }
+
+                }, 10000);
+
+            }, 2000);
+        }
+
+        var $die = $('.die'),
+            sides = 20,
+            initialSide = 1,
+            lastFace,
+            timeoutId,
+            transitionDuration = 500,
+            animationDuration = 2000;
+        isRolling = false;
+        currentPage = 1;
+        failedFirstTry = false;
+        failedSecondTry = true;
+        failedThirdTry = true;
+        let isBgAudioStarted = false;
+        let astarionAudio = false;
+        var playedEndingAudio = false;
+        var diceTimeoutId = null;
+        var isTurningDice = false;
+        var dicecontent = document.getElementById("dicecontent");
+        var isStillShowingDice = false;
+        var completedPages = [];
+        var showedHearts = false;
+
+        const winAudio = document.getElementById("win");
+
+        const bgAudio = document.getElementById("bgAudio");
+        const bgAudioToggle = document.getElementById("bgAudioToggle");
+        const audio = document.getElementById("audioPlayer");
+        const progressContainer = document.getElementById("progressContainer");
+        const progressBar = document.getElementById("progressBar");
+
+        var wongame = false;
+        var musicOff = false;
+
+        function playAudio() {
+
+            astarionAudio = true;
+            bgAudio.volume = 0.02;
+
+            audio.play().then(() => {
+                audio.onended = () => {
+                    bgAudio.volume = 0.1;
+                };
+            }).catch(error => {
+            });
+
+            //astarionAudio = true;
+            //bgAudio.pause();
+            //bgAudioToggle.classList.remove("active");
+            //bgAudioToggle.textContent = "Musique : NON";
+            //audio.play();
+        }
+
+        function pauseAudio() {
+            audio.pause();
+        }
+
+        function playDiceSound() {
+
+            if (musicOff) {
+                return;
+            }
+
+            const s = document.getElementById("bg3s");
+            s.volume = 0.5;
+            s.play()
+        }
+
+        function updateProgress() {
+            const progressPercent = (audio.currentTime / audio.duration) * 100;
+            progressBar.style.width = `${progressPercent}%`;
+        }
+        function toggleBgAudio() {
+            bgAudio.volume = 0.1; // 30% volume
+
+            if (bgAudio.paused) {
+                musicOff = false;
+                bgAudio.play();
+                bgAudioToggle.classList.add("active");
+                bgAudioToggle.textContent = "Musique : OUI";
+            } else {
+                musicOff = true;
+                bgAudio.pause();
+                bgAudioToggle.classList.remove("active");
+                bgAudioToggle.textContent = "Musique : NON";
+            }
+        }
+        function seekAudio(event) {
+            const width = progressContainer.clientWidth;
+            const clickX = event.offsetX;
+            const duration = audio.duration;
+            audio.currentTime = (clickX / width) * duration;
+        }
+
+        window.addEventListener("click", () => {
+            if (!isBgAudioStarted) {
+
+                if (!astarionAudio) {
+                    isBgAudioStarted = true;
+                    toggleBgAudio();
+                }
+            }
+        });
+
+        // Update progress bar as audio plays
+        audio.addEventListener("timeupdate", updateProgress);
+
+        $('ul > li > a').click(function () {
+            reset();
+            rollTo($(this).attr('href'));
+            return false;
+        });
+
+        function randomFace() {
+            var face = Math.floor((Math.random() * sides)) + initialSide;
+            lastFace = face == lastFace ? randomFace() : face;
+            return face;
+        }
+
+        function rollTo(face) {
+            clearTimeout(timeoutId);
+            $('ul > li > a').removeClass('active');
+            $('[href=' + face + ']').addClass('active');
+            $die.attr('data-face', face);
+        }
+
+        function ShowRadio() {
+            var storage = localStorage.getItem("finishedGame");
+
+            if (storage !== null) {
+                if (storage === "true") {
+                    $("#showRadio").css('visibility', 'visible');
+                }
+            }
+        }
+
+        function hideDice(now) {
+
+            if (now) {
+                document.getElementById("dicecontent").classList.remove("show")
+                document.getElementById("st").classList.remove("show")
+
+
+                $("#showRadio").css('visibility', 'hidden');
+
+                $("#dicecontent").css('visibility', 'hidden');
+                $("#st").css('visibility', 'hidden');
+                isStillShowingDice = false;
+            }
+            else {
+                document.getElementById("dicecontent").classList.remove("show")
+                document.getElementById("st").classList.remove("show")
+                setTimeout(() => {
+                    $("#showRadio").css('visibility', 'hidden');
+                    $("#dicecontent").css('visibility', 'hidden');
+                    $("#st").css('visibility', 'hidden');
+                    isStillShowingDice = false;
+                }, 1500);
+            }
+
+        }
+
+        function showDice(number) {
+            document.getElementById("stText").innerHTML = number + " et plus pour réussir"
+            $("#dicecontent").css('visibility', 'visible');
+            $("#st").css('visibility', 'visible');
+            ShowRadio();
+            document.getElementById("dicecontent").classList.add("show")
+            document.getElementById("st").classList.add("show")
+
+
+        }
+
+        function reset() {
+            $die.attr('data-face', null).removeClass('rolling');
+        }
+
+        function fortChamblyDocument() {
+            //Maintenant arrivés au Fort Chambly, les deux profitèrent de l’air frais et du paysage paisible.Après une petite balade le long des sentiers, ils décidèrent de s’installer dans l’herbe, à l’abri d’un grand arbre.
+            //La conversation allait bon train, entre rires sincères et anecdotes légères.À un certain moment, Estelle, avec un sourire malicieux et un petit rire un peu étrange, tendit doucement sa main vers celle de Colin, l'agrippa et la tendit vers elle.
+
+            document.getElementById("page6Resultat").innerHTML = "Fort Chambly";
+
+            p2 = document.createElement("p");
+            p2.innerHTML = 'Maintenant arrivés au Fort Chambly, les deux profitèrent de l\’air frais et du paysage paisible.Après une petite balade le long des sentiers, ils décidèrent de s\’installer dans l\’herbe, à l\’abri d’un grand arbre.La conversation allait bon train, entre rires sincères et anecdotes légères.À un certain moment, Estelle, avec un sourire malicieux et un petit rire un peu étrange, tendit doucement sa main vers celle de Colin, l\'agrippa et la tendit vers elle.';
+            document.getElementById("page6Text").append(p2);
+
+        }
+
+        function texteFin() {
+            //Maintenant arrivés au Fort Chambly, les deux profitèrent de l’air frais et du paysage paisible.Après une petite balade le long des sentiers, ils décidèrent de s’installer dans l’herbe, à l’abri d’un grand arbre.
+            //La conversation allait bon train, entre rires sincères et anecdotes légères.À un certain moment, Estelle, avec un sourire malicieux et un petit rire un peu étrange, tendit doucement sa main vers celle de Colin, l'agrippa et la tendit vers elle.
+
+            localStorage.setItem("finishedGame", "true");
+
+            document.getElementById("page10Resultat").innerHTML = "Love you!! ❤️";
+
+            p2 = document.createElement("p");
+            p2.innerHTML = 'Tu es une personne incroyable! J’espère que tu as aimé! J\'ai passé beaucoup trop de temps à faire un dé en 3D, un livre avec des pages qui tournent, des animations et audio... Je t\'aime et bien hâte d\'aller manger avec toi!! :). Aussi, tu peux maintenant choisir le jet du dé pour voir les autres fins en rejouant';
+            document.getElementById("page10Text").append(p2);
+            document.getElementById("resetButton10").hidden = false;
+            $("#finalImage").css('visibility', 'visible');
+            wongame = true;
+        }
+
+        $('.randomize, .die').click(function () {
+
+            if (isRolling || isStillShowingDice) {
+                return;
+            }
+
+            isRolling = true;
+            isStillShowingDice = true;
+            $die.addClass('rolling');
+            clearTimeout(timeoutId);
+            playDiceSound();
+            timeoutId = setTimeout(function () {
+                $die.removeClass('rolling');
+                var selectedMode = document.querySelector('input[name="diceMode"]:checked').value;
+                if (selectedMode == 1) {
+                    lastFace = 20;
+                    rollTo(20);
+                }
+                else if (selectedMode == 2) {
+                    rollTo(randomFace());
+                }
+                else if (selectedMode == 3) {
+                    lastFace = 1;
+                    rollTo(1);
+                }
+
+
+
+                if (currentPage == 2 && completedPages.includes(2) == false) {
+
+                    if (lastFace >= 6) {
+                        document.getElementById("page3Resultat").innerHTML = "Réussi";
+
+                        p = document.createElement("p");
+                        p.innerHTML = 'Colin respira profondément et s\'approcha d\'Estelle. Il lui tendit le bouquet de fleurs avec un sourire timide. Estelle, touchée par son geste, accepta sa demande avec un sourire éclatant.\"Je serais ravie d\'être ta Valentine, Colin,\" dit-elle.';
+                        document.getElementById("page3Text").append(p);
+
+
+
+                        document.getElementById("page4Resultat").innerHTML = "Le chemin";
+
+                        p2 = document.createElement("p");
+                        p2.innerHTML = 'Rassuré, Colin proposa aussitôt :\n  \"Que dirais-tu d\’une promenade au Fort Chambly pour fêter ça ?\" \"Excellente idée ! J\’adore cet endroit,\" répondit-elle en riant. Colin et Estelle se déplacent vers le Fort Chambly';
+                        document.getElementById("page4Text").append(p2);
+
+
+                        completedPages.push(2);
+                    }
+                    else {
+                        document.getElementById("page3Resultat").innerHTML = "Échec...";
+
+                        p = document.createElement("p");
+                        p.innerHTML = 'Colin trébucha sur une racine et laissa tomber les fleurs. Les amis d\'Estelle éclatèrent de rire, mais Estelle, bienveillante, l\'aida à se relever. C\'est gentil, Colin, \" dit-elle avec un sourire, \" mais je préfère rester amie pour l\'instant.';
+                        document.getElementById("page3Text").append(p);
+                        failedFirstTry = true;
+
+
+
+                        document.getElementById("page4Resultat").innerHTML = "La blague";
+
+                        p2 = document.createElement("p");
+                        p2.innerHTML = 'Colin, embarrassé mais déterminé, ramassa rapidement les fleurs tout en disant avec un sourire maladroit : \"Eh bien, si je dois faire un jet de sauvegarde contre la chute, peut-être pourrais-tu échouer à ton jet de sauvegarde contre mon charme ?\"';
+                        document.getElementById("page4Text").append(p2);
+                        completedPages.push(2);
+                    }
+
+                }
+                else if (currentPage == 4 && failedFirstTry && completedPages.includes(4) == false) {
+
+                    if (lastFace >= 9) {
+                        document.getElementById("page5Resultat").innerHTML = "Réussi";
+                        p = document.createElement("p");
+                        p.innerHTML = 'Les amis d\'Estelle échangèrent des regards surpris, mais Estelle éclata de rire. \"Tu es vraiment quelque chose, Colin,\" répondit - elle avec un sourire chaleureux. \"D\'accord, tu as gagné ta chance pour aujourd\'hui. Allons-y !\" Estelle et Colin décide donc d\'aller au Ford Chambly';
+                        document.getElementById("page5Text").append(p);
+                        completedPages.push(4);
+                        fortChamblyDocument();
+                    }
+                    else {
+                        document.getElementById("page5Resultat").innerHTML = "Échec...";
+                        p = document.createElement("p");
+                        p.innerHTML = 'Estelle esquissa un sourire poli et répondit doucement :"Colin, c\'est gentil, vraiment, mais... je préfère qu\'on reste amis.\"Les amis d\'Estelle rirent doucement en s\'éloignant avec elle, tandis que Colin, malgré la déception, se dit qu\'au moins il avait eu le courage d\'essayer.';
+                        document.getElementById("page5Text").append(p);
+                        completedPages.push(4);
+
+                        document.getElementById("resetButton").hidden = false;
+
+                    }
+
+                }
+                else if (currentPage == 4 && failedFirstTry == false && completedPages.includes(4) == false) {
+
+                    if (lastFace >= 8) {
+                        document.getElementById("page5Resultat").innerHTML = "Réussi";
+                        p = document.createElement("p");
+                        p.innerHTML = 'Le chemin vers le Fort Chambly fut empli de rires et de conversations animées. La nervosité initiale de Colin s’estompa rapidement à mesure qu\’ils apprenaient à mieux se connaître. Sous le ciel bleu et le doux vent de février, leur complicité naissante rendait cette journée inoubliable.';
+                        document.getElementById("page5Text").append(p);
+                        completedPages.push(4);
+                        fortChamblyDocument();
+
+                    }
+                    else {
+                        document.getElementById("page5Resultat").innerHTML = "Échec...";
+                        p = document.createElement("p");
+                        p.innerHTML = 'Le chemin vers le Fort Chambly fut un peu maladroit. Colin essayait de détendre l\’atmosphère avec des blagues, certaines faisant rire Estelle, d\’autres tombant un peu à plat. Malgré tout, l\’air frais et le cadre paisible finirent par apaiser le malaise, et ils discutèrent plus naturellement en arrivant au Fort.';
+                        document.getElementById("page5Text").append(p);
+                        completedPages.push(4);
+                        fortChamblyDocument();
+
+
+                    }
+
+                }
+                else if (currentPage == 6 && completedPages.includes(6) == false) {
+                    if (lastFace >= 4) {
+                        failedSecondTry = false;
+                        document.getElementById("page7Resultat").innerHTML = "Réussi";
+                        p = document.createElement("p");
+                        p.innerHTML = 'Colin, le cœur battant, s’approcha doucement. Estelle ne recula pas, et leurs lèvres se rencontrèrent dans un baiser tendre et sincère. Elle sourit ensuite, glissant sa main dans la sienne, avant de poser sa tête sur son épaule. Le moment était parfait, simple et inoubliable.';
+                        document.getElementById("page7Text").append(p);
+                        completedPages.push(6);
+                        $("#secretAudio").css('visibility', 'visible');
+
+
+                        document.getElementById("page8Resultat").innerHTML = "L'inconnu";
+
+                        p2 = document.createElement("p");
+                        p2.innerHTML = 'Alors qu\'ils se promenaient tranquillement après le moment inoubliable, un jeune homme élégant et charismatique, apparut devant eux.C\'était Astarion, un ami d\'Estelle. Il s\'inclina devant elle et dit en anglais: ';
+                        document.getElementById("page8Text").append(p2);
+
+                        p3 = document.createElement("p");
+                        p3.innerHTML = '"I\'m better than Colin. More charming and way better looking, you should go out with me Estelle."';
+                        document.getElementById("page8Text2").append(p3);
+                    }
+                    else {
+                        document.getElementById("page7Resultat").innerHTML = "Échec...";
+                        p = document.createElement("p");
+                        p.innerHTML = 'Colin, surpris par son geste brusque, paniqua et pris de court, s’éclipsa en courant, rouge de honte. Estelle, confuse, le regarda s’éloigner, un mélange de surprise et de rire dans les yeux. "Attends ! Colin !" appela - t - elle, mais il était déjà trop loin.';
+                        document.getElementById("page7Text").append(p);
+                        completedPages.push(6);
+                        document.getElementById("resetButton7").hidden = false;
+                        failedSecondTry = true;
+                    }
+                }
+                else if (currentPage == 8 && completedPages.includes(8) == false) {
+                    if (lastFace >= 2) {
+                        document.getElementById("page9Resultat").innerHTML = "Réussi";
+
+                        p = document.createElement("p");
+                        p.innerHTML = 'Colin, sentant le danger, glissa instinctivement son bras autour d\'Estelle. Elle rit doucement, jetant un regard tendre à Colin. "Merci, Astarion, mais j\'ai déjà trouvé mon valentin." Astarion esquissa un sourire en coin et s’inclina avant de disparaître dans la foule.';
+                        document.getElementById("page9Text").append(p);
+
+                        completedPages.push(8);
+                        failedThirdTry = false;
+
+                        texteFin();
+                    }
+                    else {
+                        failedThirdTry = true;
+                        document.getElementById("page9Resultat").innerHTML = "Échec...";
+
+                        p = document.createElement("p");
+                        p.innerHTML = 'Colin, sentant le danger, glissa instinctivement son bras autour d\'Estelle. Astarion, avec un sourire charmeur et une voix envoûtante, complimenta Estelle avec une élégance déconcertante. "Pourquoi perdre votre temps avec un mortel ordinaire quand vous pourriez avoir quelqu’un d’exceptionnel ?" Estelle rougit légèrement. Elle finit par céder aux charmes d’Astarion...';
+                        document.getElementById("page9Text").append(p);
+
+                        document.getElementById("resetButton9").hidden = false; // Allow retry
+                        completedPages.push(8);
+                    }
+                }
+
+
+                isRolling = false;
+
+                diceTimeoutId = setTimeout(() => {
+
+                    hideDice();
+
+                }, 1500);
+
+
+            }, animationDuration);
+
+
+            return false;
+        });
+
+        //window.addEventListener("DOMContentLoaded", () => {
+        //});
+
+        $(window).ready(function () {
+
+
+            $('.pages').turn({
+                duration: 1500,
+                width: 620,
+                height: 445,
+                //  acceleration: true,
+                //  display: 'single',
+                // autoCenter: true,
+                turnCorners: "bl,br",
+                elevation: 300,
+                when: {
+                    turning: function (event, page) {
+
+                        if (diceTimeoutId != null) {
+                            clearTimeout(diceTimeoutId);
+                            diceTimeoutId = null;
+                        }
+
+                        if (wongame && page >= 10 && playedEndingAudio == false) {
+                            playedEndingAudio = true;
+                            winAudio.play();
+                        }
+
+                        if (isRolling) {
+                            event.preventDefault();
+                        }
+                        else {
+                            hideDice(true);
+                        }
+                    },
+                    turned: function (e, page) {
+                        currentPage = page;
+                        if (page == 3) {
+                            currentPage = 2
+                        }
+                        else if (page == 5) {
+                            currentPage = 4
+                        }
+                        else if (page == 7) {
+                            currentPage = 6
+                        }
+                        else if (page == 9) {
+                            currentPage = 8
+                        }
+                        if (currentPage == 2 && completedPages.includes(2) == false) {
+
+                            var tutoDone = localStorage.getItem("tutorialDone");
+                            if (tutoDone === "true") {
+                                showDice(6);
+                            }
+                            else {
+                                setTimeout(() => {
+                                    showDice(6);
+                                    localStorage.setItem("tutorialDone", "true");
+                                }, 4500);
+                            }
+                           
+                        
+                        }
+                        else if (currentPage == 4 && completedPages.includes(4) == false && completedPages.includes(2) && failedFirstTry) {
+                            showDice(9);
+                        }
+                        else if (currentPage == 4 && completedPages.includes(4) == false && completedPages.includes(2) && failedFirstTry == false) {
+                            showDice(8);
+                        }
+                        else if (currentPage == 6 && completedPages.includes(4) && completedPages.includes(2) && completedPages.includes(6) == false) {
+                            showDice(4);
+                        }
+                        else if (currentPage == 8 && completedPages.includes(6) && failedSecondTry == false && completedPages.includes(8) == false) {
+                            showDice(2);
+                        }
+                        else if (currentPage == 10 && completedPages.includes(8) && failedThirdTry == false) {
+
+                            if (showedHearts == false) {
+                                setInterval(createHeart, 200);
+                                showedHearts = true;
+                            }
+                        }
+                        else {
+                            hideDice();
+                        }
+
+                        isTurningDice = false;
+
+                    }
+                }
+            });
+
+
+
+            function createHeart() {
+                // Create an img element or text node for the heart
+                const heart = document.createElement("div");
+
+                // Randomize between Zelda heart image and normal heart emoji
+                const heartChoice = Math.random() < 0.2; // 50% chance for each type
+
+                if (heartChoice) {
+                    // Zelda heart image
+                    const zeldaHeart = document.createElement("img");
+                    zeldaHeart.src = "favicon.webp"; // Path to your Zelda heart image
+                    zeldaHeart.style.width = "30px"; // Set the size of the Zelda heart image
+                    heart.appendChild(zeldaHeart);
+                } else {
+                    // Normal heart emoji
+                    heart.textContent = "❤️"; // Heart emoji
+                    heart.style.fontSize = "30px"; // Size of the heart emoji
+                }
+
+                // Set common styles for the falling heart
+                heart.style.position = "absolute";
+                heart.style.left = Math.random() * 95 + "vw"; // Random horizontal position
+                heart.style.top = "-10px"; // Start from above the screen
+
+                // Randomize animation duration (speed of falling)
+                heart.style.animation = `fall ${Math.random() * 2 + 3}s linear`; // Random speed for each heart
+
+                // Append the heart to the body
+                document.body.appendChild(heart);
+
+                // Remove heart after animation ends
+                heart.addEventListener("animationend", () => {
+                    heart.remove();
+                });
+            }
+
+            function createRain() {
+                // Create a heart element
+                const heart = document.createElement("div");
+                heart.textContent = "🌧️"; // Heart emoji
+                heart.style.position = "absolute";
+                heart.style.fontSize = "30px"; // Size of the heart emoji
+                heart.style.left = Math.random() * 95 + "vw"; // Random horizontal position
+                heart.style.top = "-10px"; // Start from above the screen
+
+                // Random position for horizontal placement
+                heart.style.left = Math.random() * 95 + "vw"; // Position horizontally within the viewport
+                heart.style.top = "-10px"; // Start from above the screen
+
+                // Randomize animation duration (speed of falling)
+                heart.style.animation = `fall ${Math.random() * 2 + 3}s linear`; // Random speed for each heart
+
+                // Append the heart to the body
+                document.body.appendChild(heart);
+
+                // Remove heart after animation ends
+                heart.addEventListener("animationend", () => {
+                    heart.remove();
+                });
+            }
+
+
+            // Add the falling animation via JavaScript
+            const style = document.createElement("style");
+            style.innerHTML = `
+                                            @keyframes fall {
+                                                0% {
+                                                    transform: translateY(0);
+                                                }
+                                                100% {
+                                                    transform: translateY(95vh); /* Move down through the viewport */
+                                                }
+                                            }
+                                        `;
+            document.head.appendChild(style);
+        });
+
+    </script>
+</body>
+</html>
