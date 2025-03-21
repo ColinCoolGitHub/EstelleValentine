@@ -21,15 +21,28 @@
             font-size: 2em;
             padding: 80px 20px;
             font-weight: bold;
+            display: flex;
+            align-items: center; /* Vertically center the image and text */
+            justify-content: center; /* Horizontally center the content */
             position: relative;
         }
 
             .header img {
                 width: 150px; /* Adjust this to make the logo bigger */
-                position: absolute;
-                left: 20px;
-                top: 20px;
+                margin-right: 20px; /* Add some space between the logo and text */
+                flex-shrink: 0; /* Prevent the image from shrinking */
             }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column; /* Stack the image and text vertically on mobile */
+                text-align: center; /* Center the text on mobile */
+            }
+
+                .header img {
+                    margin-bottom: 10px; /* Add space between the image and the text */
+                }
+        }
 
         .hero {
             background: url('https://www.bhseafood.ca/static/media/singleGeo.788b5c4e.jpg') no-repeat center center/cover;
